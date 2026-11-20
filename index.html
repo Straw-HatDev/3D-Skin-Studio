@@ -527,6 +527,22 @@
         scene.add(envGroup);
         let activeEnvUpdater = null;
 
+        // Shared glowing soft dot texture for Starry Night / Aurora / Embers / Floor Aura Motes
+        function createGlowDotTexture() {
+            const c = document.createElement("canvas");
+            c.width = 64;
+            c.height = 64;
+            const ctx = c.getContext("2d");
+            const g = ctx.createRadialGradient(32, 32, 2, 32, 32, 30);
+            g.addColorStop(0.0, "rgba(255,255,255,1)");
+            g.addColorStop(0.28, "rgba(255,255,255,0.92)");
+            g.addColorStop(0.62, "rgba(255,255,255,0.32)");
+            g.addColorStop(1.0, "rgba(255,255,255,0)");
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, 64, 64);
+            return new THREE.CanvasTexture(c);
+        }
+
         function createCityWindowTexture(variant = 0) {
             const c = document.createElement("canvas");
             c.width = 128;
@@ -1152,22 +1168,6 @@
                     });
                 };
                 return;
-            }
-
-            // Shared glowing soft dot texture for Starry Night / Aurora / Embers
-            function createGlowDotTexture() {
-                const c = document.createElement("canvas");
-                c.width = 64;
-                c.height = 64;
-                const ctx = c.getContext("2d");
-                const g = ctx.createRadialGradient(32, 32, 2, 32, 32, 30);
-                g.addColorStop(0.0, "rgba(255,255,255,1)");
-                g.addColorStop(0.28, "rgba(255,255,255,0.92)");
-                g.addColorStop(0.62, "rgba(255,255,255,0.32)");
-                g.addColorStop(1.0, "rgba(255,255,255,0)");
-                ctx.fillStyle = g;
-                ctx.fillRect(0, 0, 64, 64);
-                return new THREE.CanvasTexture(c);
             }
 
             if (mode === "starry") {
