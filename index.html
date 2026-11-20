@@ -4137,14 +4137,51 @@
                 ribPlate.castShadow = true;
                 chestArmorGroup.add(ribPlate);
 
-                // Watagami Armored Shoulder Straps
-                const strap = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.075, 0.66), armorObsidian);
-                strap.position.set(side * 0.31, 1.94, -0.02);
+                // Contoured Arched Watagami Shoulder Straps (smoothly flared toward shoulder joint)
+                const strapCurve = new THREE.Shape();
+                strapCurve.moveTo(-0.31, -0.02);
+                strapCurve.quadraticCurveTo(-0.18, 0.075, 0, 0.085);
+                strapCurve.quadraticCurveTo(0.18, 0.075, 0.31, -0.02);
+                strapCurve.lineTo(0.31, -0.075);
+                strapCurve.quadraticCurveTo(0.18, 0.01, 0, 0.018);
+                strapCurve.quadraticCurveTo(-0.18, 0.01, -0.31, -0.075);
+                strapCurve.closePath();
+
+                const strapGeo = new THREE.ExtrudeGeometry(strapCurve, {
+                    depth: 0.22,
+                    bevelEnabled: true,
+                    bevelThickness: 0.012,
+                    bevelSize: 0.01,
+                    bevelSegments: 2,
+                    curveSegments: 14
+                });
+                strapGeo.translate(0, 0, -0.11);
+                strapGeo.rotateY(Math.PI / 2);
+
+                const strap = new THREE.Mesh(strapGeo, armorObsidian);
+                strap.position.set(side * 0.34, 1.92, 0);
+                strap.rotation.z = side * -0.10;
+                strap.castShadow = true;
                 chestArmorGroup.add(strap);
 
-                const strapTrim = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.028, 0.62), armorCrimson);
-                strapTrim.position.set(side * 0.31, 1.985, -0.02);
+                const strapTrim = new THREE.Mesh(strapGeo, armorCrimson);
+                strapTrim.scale.set(0.62, 0.42, 0.94);
+                strapTrim.position.set(side * 0.34, 1.965, 0);
+                strapTrim.rotation.z = side * -0.10;
                 chestArmorGroup.add(strapTrim);
+
+                // Rounded Shoulder-Joint Armor Socket bridging chestplate cleanly into armPivot
+                const socketDome = new THREE.Mesh(new THREE.SphereGeometry(0.215, 18, 12), armorObsidian);
+                socketDome.scale.set(1.12, 0.86, 0.96);
+                socketDome.position.set(side * 0.56, 1.87, 0);
+                socketDome.castShadow = true;
+                chestArmorGroup.add(socketDome);
+
+                const socketCollar = new THREE.Mesh(new THREE.TorusGeometry(0.195, 0.018, 10, 22), armorGold);
+                socketCollar.rotation.y = Math.PI / 2;
+                socketCollar.rotation.x = side * 0.14;
+                socketCollar.position.set(side * 0.49, 1.87, 0);
+                chestArmorGroup.add(socketCollar);
             });
 
             // Sculpted Lower Chest V-Chevron Plate (heroic tapered Samurai breastplate base)
@@ -4373,9 +4410,27 @@
             [-1, 1].forEach(side => {
                 const armPivot = side === -1 ? rig.leftArmPivot : rig.rightArmPivot;
                 const sodeGroup = new THREE.Group();
-                sodeGroup.position.set(side * 0.14, -0.04, 0);
-                sodeGroup.rotation.z = side * -0.22;
+                sodeGroup.position.set(side * 0.065, 0.015, 0);
+                sodeGroup.rotation.z = side * -0.24;
                 armPivot.add(sodeGroup);
+
+                // Rounded inner shoulder dome cap (hides square sleeve top & blends cleanly into socket)
+                const shoulderCapDome = new THREE.Mesh(
+                    new THREE.SphereGeometry(0.225, 18, 12, 0, Math.PI * 2, 0, Math.PI * 0.58),
+                    armorObsidian
+                );
+                shoulderCapDome.scale.set(1.06, 0.72, 0.98);
+                shoulderCapDome.position.set(side * -0.02, -0.03, 0);
+                shoulderCapDome.castShadow = true;
+                sodeGroup.add(shoulderCapDome);
+
+                // Twin crimson odoshi mounting cords tying sode cleanly to the shoulder socket
+                [-0.11, 0.11].forEach(lz => {
+                    const cord = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.026, 0.044), armorCrimson);
+                    cord.position.set(side * -0.10, 0.06, lz);
+                    cord.rotation.z = side * 0.34;
+                    sodeGroup.add(cord);
+                });
 
                 // Slightly less sharp tapered protruding gold Samurai shoulder studs (byo)
                 const studGeo = new THREE.CylinderGeometry(0.0085, 0.033, 0.086, 8);
@@ -8588,7 +8643,7 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
         // Last time code (mechanics or skin) was updated in each character's studio (ISO UTC)
         const SKIN_CODE_UPDATED_AT = {
             chief: "2026-11-19T05:00:00Z",
-            lenny: "2026-11-20T07:36:00Z"
+            lenny: "2026-11-20T08:47:00Z"
         };
 
         function formatElapsedCodeUpdate(isoStr) {
@@ -9090,11 +9145,11 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
             const sign = Math.random() > 0.5 ? 1 : -1;
             const shots = [
                 // Angle 1: Straight-on front view showing full character, zooming out during the attack
-                { theta: 0, phi: 1.36, radius: 7.4, targetY: 1.52, panX: 0, roll: 0, dTheta: 0, dPhi: 0, dRadius: 1.45, dTargetY: 0, dPanX: 0 },
+                { theta: 0, phi: 1.36, radius: 8.8, targetY: 1.52, panX: 0, roll: 0, dTheta: 0, dPhi: 0, dRadius: 1.45, dTargetY: 0, dPanX: 0 },
                 // Angle 2: Bird's-eye view still shot, decently zoomed out
-                { theta: 0.15 * sign, phi: 0.42, radius: 8.6, targetY: 1.45, panX: 0, roll: 0, dTheta: 0, dPhi: 0, dRadius: 0, dTargetY: 0, dPanX: 0 },
+                { theta: 0.15 * sign, phi: 0.42, radius: 10.2, targetY: 1.45, panX: 0, roll: 0, dTheta: 0, dPhi: 0, dRadius: 0, dTargetY: 0, dPanX: 0 },
                 // Angle 3: Low angle slightly off to the side looking up (front still visible), panning slowly toward center
-                { theta: 0.58 * sign, phi: 1.66, radius: 6.4, targetY: 1.92, panX: -0.45 * sign, roll: 0, dTheta: -0.32 * sign, dPhi: 0, dRadius: 0, dTargetY: 0, dPanX: 0.45 * sign }
+                { theta: 0.58 * sign, phi: 1.66, radius: 7.8, targetY: 1.92, panX: -0.45 * sign, roll: 0, dTheta: -0.32 * sign, dPhi: 0, dRadius: 0, dTargetY: 0, dPanX: 0.45 * sign }
             ];
             if (activeSkinHooks && activeSkinHooks.setAutoLoopPaused) {
                 activeSkinHooks.setAutoLoopPaused(true);
