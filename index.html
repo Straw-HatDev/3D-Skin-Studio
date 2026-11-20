@@ -157,24 +157,35 @@
                     </svg>
                 </button>
                 <button id="btn-movie-mode" title="Toggle Movie Mode" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-green-400 hover:text-green-300 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="4" width="20" height="16" rx="2"/>
-                        <line x1="7" y1="4" x2="7" y2="20"/>
-                        <line x1="17" y1="4" x2="17" y2="20"/>
-                        <line x1="2" y1="12" x2="22" y2="12"/>
-                        <line x1="2" y1="8" x2="7" y2="8"/>
-                        <line x1="2" y1="16" x2="7" y2="16"/>
-                        <line x1="17" y1="8" x2="22" y2="8"/>
-                        <line x1="17" y1="16" x2="22" y2="16"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                        <defs>
+                            <mask id="clap-mask">
+                                <rect width="24" height="24" fill="white"/>
+                                <!-- Top clapper angled diagonal cutouts -->
+                                <polygon points="5.2,6.4 7.5,5.8 9.2,7.9 6.9,8.5" fill="black"/>
+                                <polygon points="10.2,5.1 12.5,4.5 14.2,6.6 11.9,7.2" fill="black"/>
+                                <polygon points="15.2,3.8 17.5,3.2 19.2,5.3 16.9,5.9" fill="black"/>
+                                <!-- Lower slate top bar diagonal cutouts -->
+                                <polygon points="5.8,9.8 8.0,9.8 9.6,12.2 7.4,12.2" fill="black"/>
+                                <polygon points="10.6,9.8 12.8,9.8 14.4,12.2 12.2,12.2" fill="black"/>
+                                <polygon points="15.4,9.8 17.6,9.8 19.2,12.2 17.0,12.2" fill="black"/>
+                                <!-- Center Play Triangle cutout -->
+                                <polygon points="10.2,13.6 15.6,16.4 10.2,19.2" fill="black"/>
+                            </mask>
+                        </defs>
+                        <g mask="url(#clap-mask)">
+                            <!-- Open angled top clapper arm -->
+                            <path d="M2.6 7.0 L19.8 2.4 L20.6 5.4 L3.4 10.0 Z"/>
+                            <!-- Rounded bottom slate body -->
+                            <path d="M3.4 9.8 H20.6 V18.0 A3.0 3.0 0 0 1 17.6 21.0 H6.4 A3.0 3.0 0 0 1 3.4 18.0 Z"/>
+                        </g>
                     </svg>
                 </button>
-                <button id="btn-top-spin" title="Pause Turntable Spin" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-sky-500/40 shadow-xl flex items-center justify-center text-sky-300 transition">
-                    <svg id="icon-spin-pause" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <rect x="6" y="4" width="4" height="16" rx="1"/>
-                        <rect x="14" y="4" width="4" height="16" rx="1"/>
-                    </svg>
-                    <svg id="icon-spin-play" class="hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <polygon points="6,4 20,12 6,20"/>
+                <button id="btn-top-spin" title="Toggle 360° Spin (On)" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-sky-500/40 shadow-xl flex items-center justify-center text-sky-300 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4.5 15.5c-1.5-1.1-2.5-2.3-2.5-3.5 0-2.6 4.5-4.7 10-4.7s10 2.1 10 4.7c0 2.2-3.2 4-7.6 4.5"/>
+                        <polyline points="16.5 14.5 14.1 16.5 16.7 18.4"/>
+                        <text x="12" y="13.8" text-anchor="middle" fill="currentColor" stroke="none" font-size="7.2" font-weight="800" font-family="system-ui, sans-serif">360</text>
                     </svg>
                 </button>
                 <!-- Sword Attacks Dropdown Button & Folding Attack List Box -->
@@ -201,9 +212,16 @@
                 <button id="btn-toggle-fx" title="Toggle Special Effects" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-sky-500/40 shadow-xl flex items-center justify-center text-base text-sky-300 transition">
                     ✨
                 </button>
-                <button id="btn-lighting" title="Environment: Grid" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-base text-slate-200 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" class="text-sky-300"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-                </button>
+                <div id="env-menu-wrap" class="relative">
+                    <button id="btn-lighting" title="Environments" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-base text-sky-300 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="3"/>
+                            <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                    </button>
+                    <div id="env-dropdown" class="absolute top-12 right-0 flex flex-col gap-1.5 origin-top transition-all duration-200 opacity-0 scale-y-0 pointer-events-none z-30"></div>
+                </div>
             </div>
         </header>
 
@@ -3214,6 +3232,333 @@
         window.addEventListener("touchend", onPaintEnd);
 
         // =========================================================================
+        // 3b. PROCEDURAL WEB AUDIO COMBAT & ACTION SFX ENGINE (Slicing, Charge, Energy Release, Draw & Sheath)
+        // =========================================================================
+        const StudioSfx = (() => {
+            let ctx = null;
+            let noiseBuf = null;
+
+            function getCtx() {
+                const studioEl = document.getElementById("view-studio");
+                if (!studioEl || studioEl.classList.contains("hidden")) return null;
+                if (!ctx) {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioCtx) return null;
+                    ctx = new AudioCtx();
+                    const len = Math.floor(ctx.sampleRate * 1.2);
+                    noiseBuf = ctx.createBuffer(1, len, ctx.sampleRate);
+                    const data = noiseBuf.getChannelData(0);
+                    for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+                }
+                if (ctx.state === "suspended") {
+                    ctx.resume().catch(() => {});
+                }
+                return ctx;
+            }
+
+            // Unlock cleanly on first user gesture
+            const unlockSfx = () => {
+                if (ctx && ctx.state === "suspended") ctx.resume().catch(() => {});
+            };
+            window.addEventListener("pointerdown", unlockSfx, { passive: true });
+            window.addEventListener("keydown", unlockSfx, { passive: true });
+
+            return {
+                // Power Build-Up (rising harmonic hum + resonant suction swell)
+                playCharge(style = "purple", duration = 0.45) {
+                    const c = getCtx();
+                    if (!c) return;
+                    const now = c.currentTime;
+                    const d = Math.max(0.22, duration);
+
+                    const baseStart = style === "blue" ? 150 : (style === "plasma_hold" ? 280 : (style === "arcane" ? 210 : 135));
+                    const baseEnd = style === "blue" ? 560 : (style === "plasma_hold" ? 690 : (style === "arcane" ? 640 : 480));
+
+                    const osc1 = c.createOscillator();
+                    const osc2 = c.createOscillator();
+                    const filter = c.createBiquadFilter();
+                    const gain = c.createGain();
+
+                    osc1.type = "sawtooth";
+                    osc2.type = "triangle";
+                    osc1.frequency.setValueAtTime(baseStart, now);
+                    osc1.frequency.exponentialRampToValueAtTime(baseEnd, now + d);
+                    osc2.frequency.setValueAtTime(baseStart * 1.5, now);
+                    osc2.frequency.exponentialRampToValueAtTime(baseEnd * 1.5, now + d);
+
+                    filter.type = "bandpass";
+                    filter.frequency.setValueAtTime(baseStart * 1.8, now);
+                    filter.frequency.exponentialRampToValueAtTime(baseEnd * 3.4, now + d);
+                    filter.Q.value = 3.2;
+
+                    gain.gain.setValueAtTime(0.0001, now);
+                    gain.gain.linearRampToValueAtTime(0.11, now + d * 0.78);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + d + 0.05);
+
+                    osc1.connect(filter);
+                    osc2.connect(filter);
+                    filter.connect(gain);
+                    gain.connect(c.destination);
+                    osc1.start(now);
+                    osc2.start(now);
+                    osc1.stop(now + d + 0.06);
+                    osc2.stop(now + d + 0.06);
+
+                    // Filtered air-suction shimmer layer
+                    if (noiseBuf) {
+                        const nSrc = c.createBufferSource();
+                        nSrc.buffer = noiseBuf;
+                        const nFilter = c.createBiquadFilter();
+                        nFilter.type = "bandpass";
+                        nFilter.frequency.setValueAtTime(600, now);
+                        nFilter.frequency.exponentialRampToValueAtTime(3400, now + d);
+                        nFilter.Q.value = 2.4;
+                        const nGain = c.createGain();
+                        nGain.gain.setValueAtTime(0.0001, now);
+                        nGain.gain.linearRampToValueAtTime(0.055, now + d * 0.85);
+                        nGain.gain.exponentialRampToValueAtTime(0.0001, now + d + 0.04);
+                        nSrc.connect(nFilter);
+                        nFilter.connect(nGain);
+                        nGain.connect(c.destination);
+                        nSrc.start(now);
+                        nSrc.stop(now + d + 0.05);
+                    }
+                },
+
+                // Razor Katana Slicing Air-Whip + Metallic Steel Ring
+                playSlash() {
+                    const c = getCtx();
+                    if (!c) return;
+                    const now = c.currentTime;
+
+                    // High-velocity slicing air-whip
+                    if (noiseBuf) {
+                        const nSrc = c.createBufferSource();
+                        nSrc.buffer = noiseBuf;
+                        const bp = c.createBiquadFilter();
+                        bp.type = "bandpass";
+                        bp.frequency.setValueAtTime(4800, now);
+                        bp.frequency.exponentialRampToValueAtTime(720, now + 0.24);
+                        bp.Q.value = 1.6;
+                        const ng = c.createGain();
+                        ng.gain.setValueAtTime(0.001, now);
+                        ng.gain.linearRampToValueAtTime(0.28, now + 0.025);
+                        ng.gain.exponentialRampToValueAtTime(0.0001, now + 0.26);
+                        nSrc.connect(bp);
+                        bp.connect(ng);
+                        ng.connect(c.destination);
+                        nSrc.start(now);
+                        nSrc.stop(now + 0.28);
+                    }
+
+                    // Crisp singing katana steel edge shimmer
+                    [2350, 3680].forEach((freq, i) => {
+                        const osc = c.createOscillator();
+                        const g = c.createGain();
+                        osc.type = "triangle";
+                        osc.frequency.setValueAtTime(freq, now);
+                        osc.frequency.exponentialRampToValueAtTime(freq * 0.76, now + 0.22);
+                        g.gain.setValueAtTime(0.001, now);
+                        g.gain.linearRampToValueAtTime(i === 0 ? 0.075 : 0.045, now + 0.012);
+                        g.gain.exponentialRampToValueAtTime(0.0001, now + 0.24);
+                        osc.connect(g);
+                        g.connect(c.destination);
+                        osc.start(now);
+                        osc.stop(now + 0.25);
+                    });
+
+                    // Punchy low whoosh transient
+                    const sub = c.createOscillator();
+                    const sg = c.createGain();
+                    sub.type = "sine";
+                    sub.frequency.setValueAtTime(160, now);
+                    sub.frequency.exponentialRampToValueAtTime(44, now + 0.16);
+                    sg.gain.setValueAtTime(0.18, now);
+                    sg.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+                    sub.connect(sg);
+                    sg.connect(c.destination);
+                    sub.start(now);
+                    sub.stop(now + 0.19);
+                },
+
+                // Energy Release / Plasma Impact Burst
+                playEnergyRelease(heavy = false) {
+                    const c = getCtx();
+                    if (!c) return;
+                    const now = c.currentTime;
+                    const dur = heavy ? 0.65 : 0.44;
+
+                    // Sub-bass impact drop
+                    const sub = c.createOscillator();
+                    const sg = c.createGain();
+                    sub.type = "sine";
+                    sub.frequency.setValueAtTime(heavy ? 125 : 105, now);
+                    sub.frequency.exponentialRampToValueAtTime(28, now + dur * 0.72);
+                    sg.gain.setValueAtTime(heavy ? 0.34 : 0.22, now);
+                    sg.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+                    sub.connect(sg);
+                    sg.connect(c.destination);
+                    sub.start(now);
+                    sub.stop(now + dur + 0.02);
+
+                    // Wide plasma crackle / shockwave roar
+                    if (noiseBuf) {
+                        const nSrc = c.createBufferSource();
+                        nSrc.buffer = noiseBuf;
+                        const lp = c.createBiquadFilter();
+                        lp.type = "lowpass";
+                        lp.frequency.setValueAtTime(heavy ? 4400 : 3200, now);
+                        lp.frequency.exponentialRampToValueAtTime(240, now + dur);
+                        const ng = c.createGain();
+                        ng.gain.setValueAtTime(heavy ? 0.26 : 0.16, now);
+                        ng.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+                        nSrc.connect(lp);
+                        lp.connect(ng);
+                        ng.connect(c.destination);
+                        nSrc.start(now);
+                        nSrc.stop(now + dur + 0.02);
+                    }
+
+                    // Shimmering harmonic energy tail
+                    [330, 495, 660].forEach((f, idx) => {
+                        const osc = c.createOscillator();
+                        const g = c.createGain();
+                        osc.type = idx === 0 ? "sawtooth" : "sine";
+                        osc.frequency.setValueAtTime(f * (heavy ? 1.15 : 1.0), now);
+                        osc.frequency.exponentialRampToValueAtTime(f * 0.52, now + dur);
+                        g.gain.setValueAtTime(heavy ? 0.055 : 0.038, now);
+                        g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+                        osc.connect(g);
+                        g.connect(c.destination);
+                        osc.start(now);
+                        osc.stop(now + dur + 0.02);
+                    });
+                },
+
+                // Subtle Metallic Tsuba Unlatch Click (right before drawing)
+                playTsubaClick() {
+                    const c = getCtx();
+                    if (!c) return;
+                    const now = c.currentTime;
+                    [2850, 4350].forEach((freq, i) => {
+                        const osc = c.createOscillator();
+                        const g = c.createGain();
+                        osc.type = "triangle";
+                        osc.frequency.setValueAtTime(freq, now);
+                        g.gain.setValueAtTime(i === 0 ? 0.09 : 0.05, now);
+                        g.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
+                        osc.connect(g);
+                        g.connect(c.destination);
+                        osc.start(now);
+                        osc.stop(now + 0.05);
+                    });
+                },
+
+                // Katana Draw (Singing steel-out-of-saya metallic slide)
+                playDraw() {
+                    const c = getCtx();
+                    if (!c) return;
+                    const now = c.currentTime;
+
+                    if (noiseBuf) {
+                        const nSrc = c.createBufferSource();
+                        nSrc.buffer = noiseBuf;
+                        const bp = c.createBiquadFilter();
+                        bp.type = "bandpass";
+                        bp.frequency.setValueAtTime(1600, now);
+                        bp.frequency.exponentialRampToValueAtTime(5400, now + 0.34);
+                        bp.Q.value = 3.8;
+                        const ng = c.createGain();
+                        ng.gain.setValueAtTime(0.001, now);
+                        ng.gain.linearRampToValueAtTime(0.18, now + 0.05);
+                        ng.gain.exponentialRampToValueAtTime(0.0001, now + 0.38);
+                        nSrc.connect(bp);
+                        bp.connect(ng);
+                        ng.connect(c.destination);
+                        nSrc.start(now);
+                        nSrc.stop(now + 0.40);
+                    }
+
+                    // Iconic singing blade resonance ("shiiing")
+                    [2680, 4020].forEach((freq, i) => {
+                        const osc = c.createOscillator();
+                        const g = c.createGain();
+                        osc.type = "sine";
+                        osc.frequency.setValueAtTime(freq * 0.92, now);
+                        osc.frequency.exponentialRampToValueAtTime(freq * 1.12, now + 0.34);
+                        g.gain.setValueAtTime(0.001, now);
+                        g.gain.linearRampToValueAtTime(i === 0 ? 0.065 : 0.035, now + 0.06);
+                        g.gain.exponentialRampToValueAtTime(0.0001, now + 0.42);
+                        osc.connect(g);
+                        g.connect(c.destination);
+                        osc.start(now);
+                        osc.stop(now + 0.44);
+                    });
+                },
+
+                // Katana Sheath Slide (Steel gliding back into lacquered wood scabbard)
+                playSheathSlide() {
+                    const c = getCtx();
+                    if (!c) return;
+                    const now = c.currentTime;
+
+                    if (noiseBuf) {
+                        const nSrc = c.createBufferSource();
+                        nSrc.buffer = noiseBuf;
+                        const bp = c.createBiquadFilter();
+                        bp.type = "bandpass";
+                        bp.frequency.setValueAtTime(4400, now);
+                        bp.frequency.exponentialRampToValueAtTime(1350, now + 0.30);
+                        bp.Q.value = 3.2;
+                        const ng = c.createGain();
+                        ng.gain.setValueAtTime(0.001, now);
+                        ng.gain.linearRampToValueAtTime(0.15, now + 0.04);
+                        ng.gain.exponentialRampToValueAtTime(0.0001, now + 0.32);
+                        nSrc.connect(bp);
+                        bp.connect(ng);
+                        ng.connect(c.destination);
+                        nSrc.start(now);
+                        nSrc.stop(now + 0.34);
+                    }
+                },
+
+                // Katana Sheath Lock ("SHING-CLACK" tsuba seating firmly into koiguchi mouth)
+                playSheathLock() {
+                    const c = getCtx();
+                    if (!c) return;
+                    const now = c.currentTime;
+
+                    // Wood/brass seat thud
+                    const thud = c.createOscillator();
+                    const tg = c.createGain();
+                    thud.type = "triangle";
+                    thud.frequency.setValueAtTime(240, now);
+                    thud.frequency.exponentialRampToValueAtTime(88, now + 0.08);
+                    tg.gain.setValueAtTime(0.20, now);
+                    tg.gain.exponentialRampToValueAtTime(0.0001, now + 0.09);
+                    thud.connect(tg);
+                    tg.connect(c.destination);
+                    thud.start(now);
+                    thud.stop(now + 0.10);
+
+                    // Crisp metallic tsuba snap ring
+                    [3150, 4720].forEach((freq, i) => {
+                        const osc = c.createOscillator();
+                        const g = c.createGain();
+                        osc.type = "triangle";
+                        osc.frequency.setValueAtTime(freq, now);
+                        g.gain.setValueAtTime(i === 0 ? 0.11 : 0.065, now);
+                        g.gain.exponentialRampToValueAtTime(0.0001, now + 0.16);
+                        osc.connect(g);
+                        g.connect(c.destination);
+                        osc.start(now);
+                        osc.stop(now + 0.17);
+                    });
+                }
+            };
+        })();
+
+        // =========================================================================
         // 4. 3D CHARACTER RIG & SKIN BUILDERS ("CHIEF" & "Lenny")
         // =========================================================================
         const avatarMount = new THREE.Group();
@@ -3788,6 +4133,7 @@
 
             let chiefAttack = null;
             let chiefAtkProgress = 0;
+            let chiefSfxFired = {};
 
             function getAttacks() {
                 return [
@@ -3799,6 +4145,7 @@
             function triggerAttack(type) {
                 chiefAttack = type;
                 chiefAtkProgress = 0;
+                chiefSfxFired = {};
             }
 
             function update(dt, elapsed) {
@@ -3807,6 +4154,14 @@
                 if (chiefAttack === "arcane_surge") {
                     chiefAtkProgress += dt * 0.85 * Math.max(0.3, spd);
                     const p = Math.min(chiefAtkProgress, 1);
+                    if (p >= 0.04 && !chiefSfxFired.charge) {
+                        chiefSfxFired.charge = true;
+                        StudioSfx.playCharge("arcane", 0.50);
+                    }
+                    if (p >= 0.46 && !chiefSfxFired.release) {
+                        chiefSfxFired.release = true;
+                        StudioSfx.playEnergyRelease(true);
+                    }
                     const arc = Math.sin(p * Math.PI);
                     rig.group.position.y = arc * 0.42;
                     fxGroup.position.y = -rig.group.position.y;
@@ -3829,6 +4184,14 @@
                 if (chiefAttack === "staff_cast") {
                     chiefAtkProgress += dt * 0.95 * Math.max(0.3, spd);
                     const p = Math.min(chiefAtkProgress, 1);
+                    if (p >= 0.04 && !chiefSfxFired.charge) {
+                        chiefSfxFired.charge = true;
+                        StudioSfx.playCharge("arcane", 0.42);
+                    }
+                    if (p >= 0.46 && !chiefSfxFired.release) {
+                        chiefSfxFired.release = true;
+                        StudioSfx.playEnergyRelease(false);
+                    }
                     const strike = Math.sin(p * Math.PI);
                     rig.group.position.y = strike * 0.14;
                     fxGroup.position.y = -rig.group.position.y;
@@ -4170,17 +4533,15 @@
                 strapTrim.rotation.z = side * -0.10;
                 chestArmorGroup.add(strapTrim);
 
-                // Rounded Shoulder-Joint Armor Socket bridging chestplate cleanly into armPivot
-                const socketDome = new THREE.Mesh(new THREE.SphereGeometry(0.215, 18, 12), armorObsidian);
-                socketDome.scale.set(1.12, 0.86, 0.96);
-                socketDome.position.set(side * 0.56, 1.87, 0);
-                socketDome.castShadow = true;
-                chestArmorGroup.add(socketDome);
+                // Sleek Flush Armhole Cuff Collar on Chestplate Side (cleanly frames cylindrical shoulder joint)
+                const socketCuff = new THREE.Mesh(new THREE.CylinderGeometry(0.155, 0.168, 0.06, 20), armorObsidian);
+                socketCuff.rotation.z = Math.PI / 2;
+                socketCuff.position.set(side * 0.505, 1.85, 0);
+                chestArmorGroup.add(socketCuff);
 
-                const socketCollar = new THREE.Mesh(new THREE.TorusGeometry(0.195, 0.018, 10, 22), armorGold);
+                const socketCollar = new THREE.Mesh(new THREE.TorusGeometry(0.156, 0.017, 12, 24), armorGold);
                 socketCollar.rotation.y = Math.PI / 2;
-                socketCollar.rotation.x = side * 0.14;
-                socketCollar.position.set(side * 0.49, 1.87, 0);
+                socketCollar.position.set(side * 0.528, 1.85, 0);
                 chestArmorGroup.add(socketCollar);
             });
 
@@ -4409,64 +4770,72 @@
 
             [-1, 1].forEach(side => {
                 const armPivot = side === -1 ? rig.leftArmPivot : rig.rightArmPivot;
+
+                // Replace boxy upper-arm sleeve with a smooth cylindrical armored sleeve + spherical shoulder joint
+                // so shoulder armor wraps smoothly with zero blocky corner clipping
+                const baseSleeve = armPivot.children[0];
+                if (baseSleeve && baseSleeve.isMesh) {
+                    baseSleeve.geometry = new THREE.CylinderGeometry(0.142, 0.136, 0.40, 24);
+                    baseSleeve.material = armorObsidian;
+                    baseSleeve.position.set(0, -0.20, 0);
+                }
+                const shoulderJointBall = new THREE.Mesh(new THREE.SphereGeometry(0.142, 20, 14), armorObsidian);
+                shoulderJointBall.position.set(0, 0, 0);
+                shoulderJointBall.castShadow = true;
+                armPivot.add(shoulderJointBall);
+
+                // Smooth Centered Sode Pauldron Group (wraps cleanly around armPivot with guaranteed clearance)
                 const sodeGroup = new THREE.Group();
-                sodeGroup.position.set(side * 0.065, 0.015, 0);
-                sodeGroup.rotation.z = side * -0.24;
+                sodeGroup.position.set(0, 0.015, 0);
+                sodeGroup.rotation.z = side * -0.14;
                 armPivot.add(sodeGroup);
 
-                // Rounded inner shoulder dome cap (hides square sleeve top & blends cleanly into socket)
+                // Smooth contoured upper shoulder dome shell (sits flush over spherical joint, zero clipping)
                 const shoulderCapDome = new THREE.Mesh(
-                    new THREE.SphereGeometry(0.225, 18, 12, 0, Math.PI * 2, 0, Math.PI * 0.58),
+                    new THREE.SphereGeometry(0.184, 24, 16, 0, Math.PI * 2, 0, Math.PI * 0.52),
                     armorObsidian
                 );
-                shoulderCapDome.scale.set(1.06, 0.72, 0.98);
-                shoulderCapDome.position.set(side * -0.02, -0.03, 0);
+                shoulderCapDome.scale.set(1.06, 0.72, 1.04);
+                shoulderCapDome.position.set(side * 0.01, -0.005, 0);
                 shoulderCapDome.castShadow = true;
                 sodeGroup.add(shoulderCapDome);
 
-                // Twin crimson odoshi mounting cords tying sode cleanly to the shoulder socket
-                [-0.11, 0.11].forEach(lz => {
-                    const cord = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.026, 0.044), armorCrimson);
-                    cord.position.set(side * -0.10, 0.06, lz);
-                    cord.rotation.z = side * 0.34;
-                    sodeGroup.add(cord);
-                });
+                // Slightly blunted tapered protruding gold Samurai shoulder studs (byo)
+                const studGeo = new THREE.CylinderGeometry(0.0085, 0.030, 0.078, 8);
+                const studBaseGeo = new THREE.CylinderGeometry(0.033, 0.037, 0.015, 8);
+                const xCenter = 0;
 
-                // Slightly less sharp tapered protruding gold Samurai shoulder studs (byo)
-                const studGeo = new THREE.CylinderGeometry(0.0085, 0.033, 0.086, 8);
-                const studBaseGeo = new THREE.CylinderGeometry(0.036, 0.040, 0.016, 8);
-                const xCenter = -0.22;
-
-                // Top curved & beveled shoulder cap (kanmuri-ita) + 3 protruding top studs each side
+                // Top curved & beveled gold shoulder crest (kanmuri-ita) + 3 top studs each side
                 const topCap = new THREE.Mesh(
-                    createCurvedSodeGeo(0.18, 0.305, 0.040, 0.90, side, xCenter),
+                    createCurvedSodeGeo(0.168, 0.218, 0.036, 1.18, side, xCenter),
                     armorGold
                 );
-                topCap.position.set(0, 0.095, 0);
+                topCap.position.set(0, 0.068, 0);
                 topCap.castShadow = true;
                 sodeGroup.add(topCap);
 
-                [-0.50, 0, 0.50].forEach(ang => {
-                    const rMid = 0.245;
+                [-0.62, 0, 0.62].forEach(ang => {
+                    const rMid = 0.193;
                     const tx = side * (xCenter + rMid * Math.cos(ang));
                     const tz = -rMid * Math.sin(ang);
                     const topBase = new THREE.Mesh(studBaseGeo, armorGold);
-                    topBase.position.set(tx, 0.126, tz);
+                    topBase.position.set(tx, 0.095, tz);
                     sodeGroup.add(topBase);
 
                     const topStud = new THREE.Mesh(studGeo, armorGold);
-                    topStud.position.set(tx, 0.169, tz);
+                    topStud.position.set(tx, 0.134, tz);
                     topStud.castShadow = true;
                     sodeGroup.add(topStud);
                 });
 
                 for (let tier = 0; tier < 3; tier++) {
-                    const rIn = 0.195 + tier * 0.018;
-                    const rOut = 0.295 + tier * 0.018;
-                    const ty = -tier * 0.135;
+                    const rIn = 0.172 + tier * 0.012;
+                    const rOut = 0.220 + tier * 0.012;
+                    const ty = -0.015 - tier * 0.115;
+                    const arcHalf = 1.16 - tier * 0.04;
 
                     const plate = new THREE.Mesh(
-                        createCurvedSodeGeo(rIn, rOut, 0.145, 0.88, side, xCenter),
+                        createCurvedSodeGeo(rIn, rOut, 0.125, arcHalf, side, xCenter),
                         tier === 1 ? armorObsidian : armorCrimson
                     );
                     plate.position.set(0, ty, 0);
@@ -4474,27 +4843,27 @@
                     sodeGroup.add(plate);
 
                     const trim = new THREE.Mesh(
-                        createCurvedSodeGeo(rIn - 0.004, rOut + 0.008, 0.024, 0.90, side, xCenter),
+                        createCurvedSodeGeo(rIn - 0.002, rOut + 0.006, 0.020, arcHalf + 0.02, side, xCenter),
                         armorGold
                     );
-                    trim.position.set(0, ty - 0.068, 0);
+                    trim.position.set(0, ty - 0.058, 0);
                     sodeGroup.add(trim);
 
                     // Protruding gold Samurai shoulder studs following the curved sode contour
-                    [-0.52, 0, 0.52].forEach(ang => {
+                    [-0.68, 0, 0.68].forEach(ang => {
                         const nx = side * Math.cos(ang);
                         const nz = -Math.sin(ang);
                         const normVec = new THREE.Vector3(nx, 0, nz).normalize();
-                        const sx = side * (xCenter + (rOut + 0.008) * Math.cos(ang));
-                        const sz = -(rOut + 0.008) * Math.sin(ang);
+                        const sx = side * (xCenter + (rOut + 0.006) * Math.cos(ang));
+                        const sz = -(rOut + 0.006) * Math.sin(ang);
 
                         const base = new THREE.Mesh(studBaseGeo, armorGold);
-                        base.position.set(sx + normVec.x * 0.006, ty + 0.01, sz + normVec.z * 0.006);
+                        base.position.set(sx + normVec.x * 0.005, ty + 0.008, sz + normVec.z * 0.005);
                         base.quaternion.setFromUnitVectors(sodeUpVec, normVec);
                         sodeGroup.add(base);
 
                         const stud = new THREE.Mesh(studGeo, armorGold);
-                        stud.position.set(sx + normVec.x * 0.048, ty + 0.01, sz + normVec.z * 0.048);
+                        stud.position.set(sx + normVec.x * 0.043, ty + 0.008, sz + normVec.z * 0.043);
                         stud.quaternion.setFromUnitVectors(sodeUpVec, normVec);
                         stud.castShadow = true;
                         sodeGroup.add(stud);
@@ -4605,7 +4974,7 @@
 
             // 4. Reference-Faithful Suji-bachi Kabuto Helmet + 5-Tier Shikoro + Sweeping Kuwagata + Burnished Bronze Menpo Mask
             const kabutoGroup = new THREE.Group();
-            kabutoGroup.position.set(0, 0.14, 0);
+            kabutoGroup.position.set(0, 0.13, 0);
             kabutoGroup.visible = state.showHeadgear;
             rig.headGroup.add(kabutoGroup);
 
@@ -4750,13 +5119,13 @@
                 side: THREE.DoubleSide
             });
 
-            // 4a. Ribbed Suji-bachi Helmet Bowl
-            const domeRx = 0.578, domeRy = 0.528, domeRz = 0.588;
+            // 4a. Realistic Fitted Suji-bachi Helmet Bowl (sleeker proportions matching head scale)
+            const domeRx = 0.448, domeRy = 0.422, domeRz = 0.465;
             const dome = new THREE.Mesh(
-                new THREE.SphereGeometry(0.55, 36, 20, 0, Math.PI * 2, 0, Math.PI * 0.52),
+                new THREE.SphereGeometry(0.44, 36, 20, 0, Math.PI * 2, 0, Math.PI * 0.53),
                 kabutoDomeMat
             );
-            dome.scale.set(1.05, 0.96, 1.07);
+            dome.scale.set(1.018, 0.96, 1.057);
             dome.castShadow = true;
             kabutoGroup.add(dome);
 
@@ -4767,42 +5136,43 @@
                 for (let step = 0; step <= 8; step++) {
                     const phi = 0.14 + (step / 8) * (Math.PI * 0.49 - 0.14);
                     ribPts.push(new THREE.Vector3(
-                        Math.sin(phi) * Math.sin(th) * (domeRx + 0.008),
-                        Math.cos(phi) * (domeRy + 0.008),
-                        Math.sin(phi) * Math.cos(th) * (domeRz + 0.008)
+                        Math.sin(phi) * Math.sin(th) * (domeRx + 0.007),
+                        Math.cos(phi) * (domeRy + 0.007),
+                        Math.sin(phi) * Math.cos(th) * (domeRz + 0.007)
                     ));
                 }
                 const ribCurve = new THREE.CatmullRomCurve3(ribPts);
-                const ribMesh = new THREE.Mesh(new THREE.TubeGeometry(ribCurve, 12, 0.010, 6, false), armorDarkSteel);
+                const ribMesh = new THREE.Mesh(new THREE.TubeGeometry(ribCurve, 12, 0.0085, 6, false), armorDarkSteel);
                 kabutoGroup.add(ribMesh);
             }
 
             // Ornate Tehen-kanamono Gold Apex Ring & Rosette at Crown
-            const apexRing = new THREE.Mesh(new THREE.TorusGeometry(0.082, 0.022, 10, 20), armorGold);
+            const apexRing = new THREE.Mesh(new THREE.TorusGeometry(0.068, 0.018, 10, 20), armorGold);
             apexRing.rotation.x = Math.PI / 2;
-            apexRing.position.y = 0.526;
+            apexRing.position.y = 0.420;
             kabutoGroup.add(apexRing);
 
-            const apexCollar = new THREE.Mesh(new THREE.CylinderGeometry(0.115, 0.135, 0.024, 16), armorCrimson);
-            apexCollar.position.y = 0.515;
+            const apexCollar = new THREE.Mesh(new THREE.CylinderGeometry(0.094, 0.112, 0.020, 16), armorCrimson);
+            apexCollar.position.y = 0.410;
             kabutoGroup.add(apexCollar);
 
             // Gold Brow Band (Koshi-maki)
-            const browBand = new THREE.Mesh(new THREE.TorusGeometry(0.582, 0.018, 10, 32), armorGold);
+            const browBand = new THREE.Mesh(new THREE.TorusGeometry(0.452, 0.015, 10, 32), armorGold);
             browBand.rotation.x = Math.PI / 2;
-            browBand.position.y = 0.015;
+            browBand.scale.set(1.0, 1.035, 1.0);
+            browBand.position.y = 0.012;
             kabutoGroup.add(browBand);
 
             // Protruding Gold Kabuto Hoshi Rivet Studs around lower brow ring
-            const helmetStudGeo = new THREE.CylinderGeometry(0.011, 0.020, 0.028, 10);
+            const helmetStudGeo = new THREE.CylinderGeometry(0.009, 0.017, 0.024, 10);
             const upVec = new THREE.Vector3(0, 1, 0);
             for (let i = 0; i < 12; i++) {
                 const theta = (i / 12) * Math.PI * 2;
                 const phi = Math.PI * 0.41;
-                const sx = Math.sin(phi) * Math.sin(theta) * (domeRx + 0.014);
-                const sy = Math.cos(phi) * (domeRy + 0.014);
-                const sz = Math.sin(phi) * Math.cos(theta) * (domeRz + 0.014);
-                if (sz > 0.34 && Math.abs(sx) < 0.24) continue;
+                const sx = Math.sin(phi) * Math.sin(theta) * (domeRx + 0.012);
+                const sy = Math.cos(phi) * (domeRy + 0.012);
+                const sz = Math.sin(phi) * Math.cos(theta) * (domeRz + 0.012);
+                if (sz > 0.27 && Math.abs(sx) < 0.20) continue;
                 const stud = new THREE.Mesh(helmetStudGeo, armorGold);
                 stud.position.set(sx, sy, sz);
                 stud.quaternion.setFromUnitVectors(upVec, new THREE.Vector3(sx, sy, sz).normalize());
@@ -4811,113 +5181,136 @@
 
             // 4b. Curved Dark-Iron Front Visor (Mabizashi) with Crimson Strip, Gold Rim & Brow Rivets
             const visorGroup = new THREE.Group();
-            visorGroup.position.set(0, 0.015, 0.04);
-            visorGroup.rotation.x = 0.16;
+            visorGroup.position.set(0, 0.010, 0.032);
+            visorGroup.rotation.x = 0.17;
             kabutoGroup.add(visorGroup);
 
             const visorShell = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.545, 0.655, 0.14, 28, 1, true, -Math.PI * 0.31, Math.PI * 0.62),
+                new THREE.CylinderGeometry(0.432, 0.514, 0.115, 28, 1, true, -Math.PI * 0.30, Math.PI * 0.60),
                 kabutoIronDouble
             );
             visorGroup.add(visorShell);
 
             const visorCrimsonLine = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.565, 0.595, 0.032, 28, 1, true, -Math.PI * 0.30, Math.PI * 0.60),
+                new THREE.CylinderGeometry(0.448, 0.474, 0.026, 28, 1, true, -Math.PI * 0.29, Math.PI * 0.58),
                 armorCrimsonDouble
             );
-            visorCrimsonLine.position.y = 0.042;
+            visorCrimsonLine.position.y = 0.034;
             visorGroup.add(visorCrimsonLine);
 
             const visorGoldRim = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.652, 0.666, 0.026, 28, 1, true, -Math.PI * 0.315, Math.PI * 0.63),
+                new THREE.CylinderGeometry(0.511, 0.523, 0.022, 28, 1, true, -Math.PI * 0.305, Math.PI * 0.61),
                 kabutoGoldDouble
             );
-            visorGoldRim.position.y = -0.068;
+            visorGoldRim.position.y = -0.056;
             visorGroup.add(visorGoldRim);
 
             // Three iconic gold brow rivets across the visor
             [-0.22, 0, 0.22].forEach(ang => {
-                const vr = new THREE.Mesh(new THREE.SphereGeometry(0.018, 10, 8), armorGold);
-                vr.position.set(Math.sin(ang) * 0.615, -0.01, Math.cos(ang) * 0.615);
+                const vr = new THREE.Mesh(new THREE.SphereGeometry(0.015, 10, 8), armorGold);
+                vr.position.set(Math.sin(ang) * 0.486, -0.008, Math.cos(ang) * 0.486);
                 visorGroup.add(vr);
             });
 
-            // 4c. Sweeping Curved Outward-Rolled Fukigaeshi Ear Wings (solidly attached into helmet brow/visor/shikoro seam!)
+            // 4c. Classic Upright Curved-Up Scalloped Fukigaeshi Ear Plates (Reference Photo #2 — clean, flat-faced, zero twisting/looping)
+            const fukiShape = new THREE.Shape();
+            fukiShape.moveTo(-0.044, 0.0);
+            fukiShape.quadraticCurveTo(-0.088, 0.055, -0.104, 0.125);
+            fukiShape.quadraticCurveTo(-0.110, 0.176, -0.056, 0.190);
+            fukiShape.quadraticCurveTo(0.0, 0.222, 0.056, 0.190);
+            fukiShape.quadraticCurveTo(0.110, 0.176, 0.104, 0.125);
+            fukiShape.quadraticCurveTo(0.088, 0.055, 0.044, 0.0);
+            fukiShape.closePath();
+
+            const fukiBorderGeo = new THREE.ExtrudeGeometry(fukiShape, {
+                depth: 0.014,
+                bevelEnabled: true,
+                bevelThickness: 0.005,
+                bevelSize: 0.006,
+                bevelSegments: 2,
+                curveSegments: 18
+            });
+            fukiBorderGeo.translate(0, 0, -0.007);
+
+            const fukiFaceGeo = new THREE.ExtrudeGeometry(fukiShape, {
+                depth: 0.016,
+                bevelEnabled: true,
+                bevelThickness: 0.004,
+                bevelSize: 0.002,
+                bevelSegments: 2,
+                curveSegments: 18
+            });
+            fukiFaceGeo.translate(0, 0, -0.006);
+
             [-1, 1].forEach(side => {
                 const fukiGroup = new THREE.Group();
-                fukiGroup.position.set(side * 0.44, -0.048, 0.12);
-                fukiGroup.rotation.set(0.14, side * 0.50, side * -0.32);
+                // Seated cleanly right at the side brow/shikoro junction, curving smoothly upward & slightly outward
+                fukiGroup.position.set(side * 0.448, -0.032, 0.168);
+                fukiGroup.rotation.set(-0.08, side * 0.34, side * -0.24);
                 kabutoGroup.add(fukiGroup);
 
-                // Solid iron mounting bracket fusing the inner curl directly into the helmet wall & shikoro
-                const wingBracket = new THREE.Mesh(
-                    new THREE.BoxGeometry(0.16, 0.18, 0.15),
-                    kabutoIronDouble
-                );
-                wingBracket.position.set(side * -0.05, 0.01, 0.13);
-                fukiGroup.add(wingBracket);
+                // Solid iron anchor tab fusing the bottom base cleanly into the helmet brow/shikoro rim
+                const anchorStem = new THREE.Mesh(new THREE.BoxGeometry(0.088, 0.068, 0.070), kabutoIronDouble);
+                anchorStem.position.set(side * -0.018, 0.018, -0.034);
+                fukiGroup.add(anchorStem);
 
-                // Curved rolled outer iron wing arch
-                const wingShell = new THREE.Mesh(
-                    new THREE.CylinderGeometry(0.20, 0.24, 0.28, 18, 1, true, -Math.PI * 0.40, Math.PI * 0.80),
-                    kabutoIronDouble
-                );
-                wingShell.rotation.z = Math.PI / 2;
-                fukiGroup.add(wingShell);
+                // Gleaming gold outer scalloped border (fukurin)
+                const goldBorder = new THREE.Mesh(fukiBorderGeo, armorGold);
+                goldBorder.scale.set(1.07, 1.05, 1.0);
+                goldBorder.position.set(0, -0.004, -0.003);
+                goldBorder.castShadow = true;
+                fukiGroup.add(goldBorder);
 
-                // Bold crimson-lacquered arched band across the middle of the rolled wing
-                const wingCrimson = new THREE.Mesh(
-                    new THREE.CylinderGeometry(0.214, 0.246, 0.13, 18, 1, true, -Math.PI * 0.38, Math.PI * 0.76),
-                    armorCrimsonDouble
-                );
-                wingCrimson.rotation.z = Math.PI / 2;
-                fukiGroup.add(wingCrimson);
+                // Recessed dark-lacquered inner shield face
+                const facePlate = new THREE.Mesh(fukiFaceGeo, armorObsidian);
+                facePlate.scale.set(0.92, 0.92, 1.0);
+                facePlate.position.set(0, 0.008, 0.004);
+                facePlate.castShadow = true;
+                fukiGroup.add(facePlate);
 
-                // Gleaming gold front & rear edge borders on the wing
-                [-0.135, 0.135].forEach(bx => {
-                    const wingTrim = new THREE.Mesh(
-                        new THREE.CylinderGeometry(0.215, 0.252, 0.024, 18, 1, true, -Math.PI * 0.41, Math.PI * 0.82),
-                        kabutoGoldDouble
-                    );
-                    wingTrim.rotation.z = Math.PI / 2;
-                    wingTrim.position.x = bx;
-                    fukiGroup.add(wingTrim);
-                });
+                // Raised Circular Gold Clan Kamon Medallion centered on the fukigaeshi face (matching Reference #2)
+                const kamonDisc = new THREE.Mesh(new THREE.CylinderGeometry(0.042, 0.044, 0.014, 20), armorGold);
+                kamonDisc.rotation.x = Math.PI / 2;
+                kamonDisc.position.set(0, 0.118, 0.016);
+                fukiGroup.add(kamonDisc);
 
-                // Gold decorative rivets along the crimson wing arch
-                [-0.35, 0, 0.35].forEach(ra => {
-                    const fStud = new THREE.Mesh(new THREE.SphereGeometry(0.015, 8, 8), armorGold);
-                    fStud.position.set(0, Math.sin(ra) * 0.236, Math.cos(ra) * 0.236);
-                    fukiGroup.add(fStud);
-                });
+                const kamonRing = new THREE.Mesh(new THREE.TorusGeometry(0.031, 0.0055, 8, 18), armorCrimson);
+                kamonRing.position.set(0, 0.118, 0.023);
+                fukiGroup.add(kamonRing);
+
+                const kamonCore = new THREE.Mesh(new THREE.SphereGeometry(0.015, 10, 8), armorGold);
+                kamonCore.scale.set(1, 1, 0.5);
+                kamonCore.position.set(0, 0.118, 0.024);
+                fukiGroup.add(kamonCore);
             });
 
-            // 4d. Compact 3-Tiered Flared Laced Shikoro Neck Guard
+            // 4d. Graceful 3-Tiered Flared Laced Shikoro Neck Guard (contrasts sleek tight hachi!)
             for (let t = 0; t < 3; t++) {
-                const rTop = 0.54 + t * 0.048;
-                const rBot = rTop + 0.056;
-                const ty = -0.025 - t * 0.068;
+                const rTop = 0.430 + t * 0.046;
+                const rBot = rTop + 0.054;
+                const ty = -0.022 - t * 0.064;
                 const tierMesh = new THREE.Mesh(
-                    new THREE.CylinderGeometry(rTop, rBot, 0.075, 32, 1, true, Math.PI * 0.33, Math.PI * 1.34),
+                    new THREE.CylinderGeometry(rTop, rBot, 0.072, 32, 1, true, Math.PI * 0.31, Math.PI * 1.38),
                     shikoroTexMat
                 );
-                tierMesh.position.set(0, ty, -0.014 * t);
+                tierMesh.position.set(0, ty, -0.012 * t);
                 tierMesh.castShadow = true;
                 kabutoGroup.add(tierMesh);
 
                 // Crisp gold lower edge beading on every tier
                 const tierRim = new THREE.Mesh(
-                    new THREE.CylinderGeometry(rBot - 0.002, rBot + 0.006, 0.015, 32, 1, true, Math.PI * 0.33, Math.PI * 1.34),
+                    new THREE.CylinderGeometry(rBot - 0.002, rBot + 0.005, 0.014, 32, 1, true, Math.PI * 0.31, Math.PI * 1.38),
                     kabutoGoldDouble
                 );
-                tierRim.position.set(0, ty - 0.036, -0.014 * t);
+                tierRim.position.set(0, ty - 0.034, -0.012 * t);
                 kabutoGroup.add(tierRim);
             }
 
             // 4e. Sweeping Gilded Kuwagata Crescent Horns + Ornate Twin-Disc Maedate Crest
             const crestGroup = new THREE.Group();
-            crestGroup.position.set(0, 0.14, 0.575);
+            crestGroup.position.set(0, 0.115, 0.452);
             crestGroup.rotation.x = -0.15;
+            crestGroup.scale.setScalar(0.86);
             kabutoGroup.add(crestGroup);
 
             // Sweeping unified U-shaped golden crescent horns
@@ -4979,10 +5372,10 @@
             // 4f. Original Compact Sculpted Burnished Bronze Samurai Mask (Menpo) Attached Directly to Front Bottom of Visor
             // Keeps the original compact sculpted menpo proportions with natural open gaps on both sides!
             const menpoGroup = new THREE.Group();
-            menpoGroup.position.set(0, 0.092, 0.246);
+            menpoGroup.position.set(0, 0.105, 0.102);
             visorGroup.add(menpoGroup);
 
-            // Original compact contoured bronze mask shell (top front center sits flush at visorGoldRim y=-0.073, z=+0.662)
+            // Original compact contoured bronze mask shell (top front center sits flush at visorGoldRim y=-0.060, z=+0.518)
             const menpoProfile = [
                 new THREE.Vector2(0.14, -0.475),
                 new THREE.Vector2(0.25, -0.415),
@@ -4997,15 +5390,15 @@
 
             // Clean gold rivets & subtle bridge tab fastening the top front center of the mask directly to the visor bottom rim
             const visorMountTab = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.658, 0.658, 0.032, 14, 1, true, -Math.PI * 0.11, Math.PI * 0.22),
+                new THREE.CylinderGeometry(0.517, 0.517, 0.028, 14, 1, true, -Math.PI * 0.12, Math.PI * 0.24),
                 menpoBronzeMat
             );
-            visorMountTab.position.set(0, -0.082, 0);
+            visorMountTab.position.set(0, -0.068, 0);
             visorGroup.add(visorMountTab);
 
             [-0.12, 0, 0.12].forEach(ang => {
-                const rv = new THREE.Mesh(new THREE.SphereGeometry(0.013, 8, 8), armorGold);
-                rv.position.set(Math.sin(ang) * 0.664, -0.078, Math.cos(ang) * 0.664);
+                const rv = new THREE.Mesh(new THREE.SphereGeometry(0.012, 8, 8), armorGold);
+                rv.position.set(Math.sin(ang) * 0.523, -0.066, Math.cos(ang) * 0.523);
                 visorGroup.add(rv);
             });
 
@@ -5085,33 +5478,33 @@
 
             // 4g. Thick Braided Crimson Chin Cord (Kabuto-o) & Tied Bow Knot anchored inside the helmet sides
             const chinCordCurve = new THREE.CatmullRomCurve3([
-                new THREE.Vector3(-0.46, -0.05, 0.18),
-                new THREE.Vector3(-0.39, -0.28, 0.25),
-                new THREE.Vector3(-0.22, -0.45, 0.34),
-                new THREE.Vector3(0.00, -0.495, 0.375),
-                new THREE.Vector3(0.22, -0.45, 0.34),
-                new THREE.Vector3(0.39, -0.28, 0.25),
-                new THREE.Vector3(0.46, -0.05, 0.18)
+                new THREE.Vector3(-0.40, -0.04, 0.14),
+                new THREE.Vector3(-0.36, -0.27, 0.22),
+                new THREE.Vector3(-0.20, -0.44, 0.31),
+                new THREE.Vector3(0.00, -0.485, 0.345),
+                new THREE.Vector3(0.20, -0.44, 0.31),
+                new THREE.Vector3(0.36, -0.27, 0.22),
+                new THREE.Vector3(0.40, -0.04, 0.14)
             ]);
-            const chinCordMesh = new THREE.Mesh(new THREE.TubeGeometry(chinCordCurve, 28, 0.030, 10, false), cordMat);
+            const chinCordMesh = new THREE.Mesh(new THREE.TubeGeometry(chinCordCurve, 28, 0.028, 10, false), cordMat);
             chinCordMesh.castShadow = true;
             kabutoGroup.add(chinCordMesh);
 
             // Double layered braided chin cord wrap + central knot + twin bow loops & tassels
-            const chinKnot = new THREE.Mesh(new THREE.SphereGeometry(0.050, 12, 10), cordMat);
+            const chinKnot = new THREE.Mesh(new THREE.SphereGeometry(0.046, 12, 10), cordMat);
             chinKnot.scale.set(1.25, 0.9, 0.9);
-            chinKnot.position.set(0, -0.505, 0.39);
+            chinKnot.position.set(0, -0.495, 0.36);
             kabutoGroup.add(chinKnot);
 
             [-1, 1].forEach(side => {
-                const bowLoop = new THREE.Mesh(new THREE.TorusGeometry(0.052, 0.020, 8, 16), cordMat);
-                bowLoop.position.set(side * 0.082, -0.505, 0.39);
+                const bowLoop = new THREE.Mesh(new THREE.TorusGeometry(0.048, 0.018, 8, 16), cordMat);
+                bowLoop.position.set(side * 0.076, -0.495, 0.36);
                 bowLoop.rotation.set(0.25, side * -0.3, side * -0.35);
                 bowLoop.scale.set(1.25, 0.75, 1);
                 kabutoGroup.add(bowLoop);
 
-                const cordTail = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.026, 0.10, 8), cordMat);
-                cordTail.position.set(side * 0.056, -0.562, 0.405);
+                const cordTail = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.024, 0.095, 8), cordMat);
+                cordTail.position.set(side * 0.052, -0.550, 0.375);
                 cordTail.rotation.set(-0.25, 0, side * 0.38);
                 kabutoGroup.add(cordTail);
             });
@@ -6555,6 +6948,7 @@
             let currentAttack = null; // null | "slash1" | "slash2" | "sheath" | "unsheath"
             let attackProgress = 0;
             let impactFired = false;
+            let sfxFired = {};
             // Fixed deterministic loop: Dimension Slash -> Plasma Slice -> Sheath -> Unsheath
             const ATTACK_LOOP = ["slash1", "slash2", "sheath", "unsheath"];
             let loopIdx = 0;
@@ -6678,10 +7072,10 @@
 
             function getAttacks() {
                 return [
-                    { id: "slash1", name: "Dimension Slash", desc: "Dark purple crescent swipe" },
-                    { id: "slash2", name: "Plasma Slice", desc: "Blue sphere to green blast" },
-                    { id: "sheath", name: "Sheath", desc: "Two-handed flip & slam" },
-                    { id: "unsheath", name: "Draw", desc: "Swift curved draw" }
+                    { id: "slash1", name: "Dimension Slash", desc: "Dark purple crescent swipe", category: "attack" },
+                    { id: "slash2", name: "Plasma Slice", desc: "Blue sphere to green blast", category: "attack" },
+                    { id: "sheath", name: "Sheath", desc: "Two-handed flip & slam", category: "action" },
+                    { id: "unsheath", name: "Draw", desc: "Swift curved draw", category: "action" }
                 ];
             }
 
@@ -6729,6 +7123,16 @@
                 return currentAttack ? attackProgress : null;
             }
 
+            function prepareAttackPose(type) {
+                if (currentAttack !== null) currentAttack = null;
+                if (type === "slash1" || type === "slash2" || type === "sheath") {
+                    ensureKatanaInHand();
+                } else if (type === "unsheath") {
+                    ensureKatanaInSaya();
+                }
+                resetAttackVFX();
+            }
+
             function triggerAttack(type) {
                 if (type === "slash1" || type === "slash2" || type === "sheath") {
                     ensureKatanaInHand();
@@ -6738,6 +7142,7 @@
                 currentAttack = type;
                 attackProgress = 0;
                 impactFired = false;
+                sfxFired = {};
                 sheathPhase = 0;
                 tsubaClickFired = false;
                 resetAttackVFX();
@@ -6748,7 +7153,7 @@
                 const isCombat = currentAttack === "slash1" || currentAttack === "slash2";
                 updateSamuraiFX(dt, elapsed, isCombat ? 2.4 : 1.0);
 
-                // Automated cycle: Dimension Slash (slash1) -> 2s -> Plasma Slice (slash2) -> 2s -> Sheath -> 3s -> Unsheath -> 2s -> repeat
+                // Automated cycle: Dimension Slash (slash1) -> 9s -> Plasma Slice (slash2) -> 9s -> Sheath -> 9s -> Unsheath -> 9s -> repeat
                 if (currentAttack === null && spd > 0 && !autoLoopPaused) {
                     attackCooldown -= dt;
                     if (attackCooldown <= 0) {
@@ -6779,6 +7184,10 @@
                         sayaGroup.rotation.set(lerp(0.82, 0.94, k), 0, lerp(0.12, 0.22, k));
                     } else if (p < 0.43) {
                         // Phase 2: Brief ~0.28s coiled tension poise + steel blade glint star
+                        if (!sfxFired.charge) {
+                            sfxFired.charge = true;
+                            StudioSfx.playCharge("purple", 0.34);
+                        }
                         const k = easeInOut((p - 0.24) / 0.19);
                         rig.group.position.set(-0.06, -0.10, 0.36);
                         rig.group.rotation.set(0.10, lerp(0.56, 0.66, k), -0.06);
@@ -6806,6 +7215,14 @@
                         }
                     } else if (p < 0.62) {
                         // Phase 3: Clean, razor-sharp dark-purple crescent slash left-to-right + 0.05s delayed white glow trail blade!
+                        if (!sfxFired.slash) {
+                            sfxFired.slash = true;
+                            StudioSfx.playSlash();
+                        }
+                        if (p >= 0.47 && !sfxFired.release) {
+                            sfxFired.release = true;
+                            StudioSfx.playEnergyRelease(false);
+                        }
                         const raw = (p - 0.43) / 0.19;
                         const k = easeOutQuart(raw);
                         bladeGlint.visible = false;
@@ -6915,7 +7332,7 @@
                         resetAttackVFX();
                         currentAttack = null;
                         loopIdx = 1; // Next: Plasma Slice ("slash2")
-                        attackCooldown = 2.0;
+                        attackCooldown = 9.0;
                     }
                     return;
                 }
@@ -6924,6 +7341,10 @@
                     // ATTACK 2 — SLOW BLUE PLASMA BLADE TRAVEL -> MAX-SIZE HOLD DOWN TO FLOOR -> RAPID GREEN FLOOR EXPLOSION
                     attackProgress += dt * 0.42 * Math.max(0.3, spd);
                     const p = Math.min(attackProgress, 1);
+                    if (p >= 0.04 && !sfxFired.charge1) {
+                        sfxFired.charge1 = true;
+                        StudioSfx.playCharge("blue", 0.78);
+                    }
                     const OVERHEAD_MAX_SCALE = 0.38;
                     const IMPACT_P = 0.726; // Exact floor contact (raw = 0.90 of Phase 3)
                     const IMPACT_SPAN = 0.88 - IMPACT_P;
@@ -6961,6 +7382,10 @@
                         slashLight.intensity = k * 1.4 * state.glowIntensity;
                     } else if (p < 0.60) {
                         // Phase 2: Overhead pause — blue plasma expands to max size (0.38, slightly smaller than head) & holds steady!
+                        if (!sfxFired.charge2) {
+                            sfxFired.charge2 = true;
+                            StudioSfx.playCharge("plasma_hold", 0.62);
+                        }
                         const k = (p - 0.34) / 0.26;
                         const kSmooth = easeInOut(k);
                         rig.group.position.set(0, 0.03, -0.44);
@@ -7010,6 +7435,10 @@
                         slashLight.intensity = (1.5 + volatility * 2.2) * state.glowIntensity;
                     } else if (p < 0.74) {
                         // Phase 3: Bring the energy ball straight down at the EXACT same max size (0.38) until it hits the floor!
+                        if (!sfxFired.slash) {
+                            sfxFired.slash = true;
+                            StudioSfx.playSlash();
+                        }
                         const raw = (p - 0.60) / 0.14;
                         const k = easeInExpo(raw) * 0.38 + easeOutQuart(raw) * 0.62;
 
@@ -7042,6 +7471,10 @@
                             slashLight.intensity = 3.8 * state.glowIntensity;
                         } else {
                             // EXACT FLOOR CONTACT: seamlessly hand off from 0.38 blue ball -> rapidly expanding GREEN plasma explosion!
+                            if (!sfxFired.release) {
+                                sfxFired.release = true;
+                                StudioSfx.playEnergyRelease(true);
+                            }
                             if (!impactFired && state.showFX) {
                                 impactFired = true;
                                 samuraiRoot.updateMatrixWorld(true);
@@ -7169,7 +7602,7 @@
                         resetAttackVFX();
                         currentAttack = null;
                         loopIdx = 2; // Next: Sheath
-                        attackCooldown = 2.0;
+                        attackCooldown = 9.0;
                     }
                     return;
                 }
@@ -7331,6 +7764,10 @@
                         bladeMat.emissiveIntensity = 0.28 * state.glowIntensity;
                     } else if (p < 0.90) {
                         // Phase 5b (~0.40s -> 0.62s total downward slam, noticeably faster than the 1.0s lift!): Drive straight into the sheath + gold lock click!
+                        if (!sfxFired.sheathSlide) {
+                            sfxFired.sheathSlide = true;
+                            StudioSfx.playSheathSlide();
+                        }
                         if (katanaGroup.parent !== sayaGroup) {
                             sayaGroup.add(katanaGroup);
                             katanaGroup.scale.set(1, 1, 1);
@@ -7357,6 +7794,10 @@
                         computeArmAimQuat(rig.leftArmPivot, _ptRig, rig.leftArmPivot.quaternion);
 
                         // Sharp golden tsuba slam-lock glint, flash light & metallic lock sparks!
+                        if (slide >= 0.86 && !sfxFired.sheathLock) {
+                            sfxFired.sheathLock = true;
+                            StudioSfx.playSheathLock();
+                        }
                         if (slide >= 0.86 && state.showFX) {
                             const clickK = (slide - 0.86) / 0.14;
                             bladeGlint.visible = true;
@@ -7422,8 +7863,8 @@
                         resetAttackVFX();
                         isSheathed = true;
                         currentAttack = null;
-                        loopIdx = 3; // Next: Unsheath after 3 seconds
-                        attackCooldown = 3.0;
+                        loopIdx = 3; // Next: Unsheath after 9 seconds
+                        attackCooldown = 9.0;
                     }
                     return;
                 }
@@ -7464,6 +7905,10 @@
                         rig.leftArmPivot.quaternion.copy(_lArmStartQuat).slerp(_aimQuat, k);
 
                         // Subtle thumb-break glint star at the gold tsuba right before drawing
+                        if (k > 0.62 && !sfxFired.unlatch) {
+                            sfxFired.unlatch = true;
+                            StudioSfx.playTsubaClick();
+                        }
                         if (k > 0.62 && state.showFX) {
                             const ck = (k - 0.62) / 0.38;
                             bladeGlint.visible = true;
@@ -7476,6 +7921,10 @@
                         }
                     } else if (p < 0.66) {
                         // Phase 2: Swift, clean curved draw straight out of the gold koiguchi mouth with saya-biki pull-back!
+                        if (!sfxFired.draw) {
+                            sfxFired.draw = true;
+                            StudioSfx.playDraw();
+                        }
                         const k = easeOutCubic((p - 0.28) / 0.38);
                         const slide = 1 - k;
                         bladeGlint.visible = false;
@@ -7540,8 +7989,8 @@
                         ensureKatanaInHand();
                         resetAttackVFX();
                         currentAttack = null;
-                        loopIdx = 0; // Next: Dimension Slash ("slash1") after 2 seconds
-                        attackCooldown = 2.0;
+                        loopIdx = 0; // Next: Dimension Slash ("slash1") after 9 seconds
+                        attackCooldown = 9.0;
                     }
                     return;
                 }
@@ -7585,7 +8034,7 @@
                 rig.skinMat.color.set(hex);
             }
 
-            return { group: samuraiRoot, update, triggerAttack, getAttacks, getAttackProgress, setAutoLoopPaused, setFXVisible, setSkinTone };
+            return { group: samuraiRoot, update, triggerAttack, prepareAttackPose, getAttacks, getAttackProgress, setAutoLoopPaused, setFXVisible, setSkinTone };
         }
 
         // =========================================================================
@@ -7902,12 +8351,10 @@
         function toggleAutoSpin() {
             state.autoSpin = !state.autoSpin;
             const topBtn = document.getElementById("btn-top-spin");
-            topBtn.title = state.autoSpin ? "Pause Turntable Spin" : "Play Turntable Spin";
+            topBtn.title = state.autoSpin ? "Toggle 360° Spin (On)" : "Toggle 360° Spin (Off)";
             topBtn.className = state.autoSpin
                 ? "w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-sky-500/40 shadow-xl flex items-center justify-center text-sky-300 transition"
-                : "w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-slate-400 hover:text-white transition";
-            document.getElementById("icon-spin-pause").classList.toggle("hidden", !state.autoSpin);
-            document.getElementById("icon-spin-play").classList.toggle("hidden", state.autoSpin);
+                : "w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-slate-400 opacity-55 hover:opacity-90 transition";
         }
 
         document.getElementById("btn-top-spin").addEventListener("click", toggleAutoSpin);
@@ -7960,6 +8407,9 @@
 
         function setAttacksMenuOpen(open) {
             attacksMenuOpen = open;
+            if (open && typeof setEnvMenuOpen === "function" && envMenuOpen) {
+                setEnvMenuOpen(false);
+            }
             attacksDropdown.classList.toggle("opacity-100", open);
             attacksDropdown.classList.toggle("scale-y-100", open);
             attacksDropdown.classList.toggle("pointer-events-auto", open);
@@ -7977,8 +8427,8 @@
             if (attacksCharBadge) attacksCharBadge.innerText = charLabel;
             attacksListEl.innerHTML = "";
 
-            const attacks = (activeSkinHooks && activeSkinHooks.getAttacks) ? activeSkinHooks.getAttacks() : [];
-            if (attacks.length === 0) {
+            const allItems = (activeSkinHooks && activeSkinHooks.getAttacks) ? activeSkinHooks.getAttacks() : [];
+            if (allItems.length === 0) {
                 const empty = document.createElement("div");
                 empty.className = "text-[11px] text-slate-400 py-2 text-center";
                 empty.innerText = "No attacks available";
@@ -7986,7 +8436,7 @@
                 return;
             }
 
-            attacks.forEach(atk => {
+            const buildItemRow = (atk) => {
                 const row = document.createElement("div");
                 if (atk.id === "slash1") {
                     row.className = "flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-xl bg-purple-900/75 hover:bg-purple-800/80 border border-purple-500/60 transition";
@@ -8016,8 +8466,26 @@
 
                 row.appendChild(info);
                 row.appendChild(playBtn);
-                attacksListEl.appendChild(row);
+                return row;
+            };
+
+            const attackItems = allItems.filter(item => item.category !== "action");
+            const actionItems = allItems.filter(item => item.category === "action");
+
+            attackItems.forEach(atk => {
+                attacksListEl.appendChild(buildItemRow(atk));
             });
+
+            if (actionItems.length > 0) {
+                const actionsHeader = document.createElement("div");
+                actionsHeader.className = "pt-2 mt-1.5 border-t border-slate-800";
+                actionsHeader.innerHTML = `<span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-300">Actions</span>`;
+                attacksListEl.appendChild(actionsHeader);
+
+                actionItems.forEach(act => {
+                    attacksListEl.appendChild(buildItemRow(act));
+                });
+            }
         }
 
         attacksBtn.addEventListener("click", (e) => {
@@ -8045,12 +8513,59 @@
             glacier: "Environment: Glacier"
         };
 
-        document.getElementById("btn-lighting").addEventListener("click", (e) => {
-            const nextIdx = (ENV_ORDER.indexOf(state.environment) + 1) % ENV_ORDER.length;
-            state.environment = ENV_ORDER[nextIdx];
-            buildEnvironment(state.environment);
-            e.currentTarget.innerHTML = ENV_LABELS[state.environment];
-            e.currentTarget.title = ENV_TITLES[state.environment];
+        const envMenuWrap = document.getElementById("env-menu-wrap");
+        const envBtn = document.getElementById("btn-lighting");
+        const envDropdown = document.getElementById("env-dropdown");
+        let envMenuOpen = false;
+
+        function renderEnvDropdown() {
+            if (!envDropdown) return;
+            envDropdown.innerHTML = "";
+            ENV_ORDER.forEach(envId => {
+                const isActive = envId === state.environment;
+                const item = document.createElement("button");
+                item.type = "button";
+                item.title = ENV_TITLES[envId];
+                item.className = isActive
+                    ? "w-10 h-10 rounded-xl bg-sky-500/25 hover:bg-sky-500/35 backdrop-blur-md border border-sky-400/80 shadow-xl shadow-sky-500/20 flex items-center justify-center text-base text-white transition active:scale-95 touch-manipulation"
+                    : "w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 hover:border-sky-400/70 shadow-xl flex items-center justify-center text-base text-slate-200 transition active:scale-95 touch-manipulation";
+                item.innerHTML = ENV_LABELS[envId];
+                item.addEventListener("click", (ev) => {
+                    ev.stopPropagation();
+                    state.environment = envId;
+                    buildEnvironment(state.environment);
+                    setEnvMenuOpen(false);
+                });
+                envDropdown.appendChild(item);
+            });
+        }
+
+        function setEnvMenuOpen(open) {
+            envMenuOpen = open;
+            if (open) {
+                if (typeof setAttacksMenuOpen === "function" && attacksMenuOpen) setAttacksMenuOpen(false);
+                renderEnvDropdown();
+            }
+            if (envDropdown) {
+                envDropdown.classList.toggle("opacity-0", !open);
+                envDropdown.classList.toggle("scale-y-0", !open);
+                envDropdown.classList.toggle("pointer-events-none", !open);
+            }
+            if (envBtn) {
+                envBtn.classList.toggle("border-sky-400/80", open);
+                envBtn.classList.toggle("bg-slate-800", open);
+            }
+        }
+
+        envBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            setEnvMenuOpen(!envMenuOpen);
+        });
+
+        document.addEventListener("click", (e) => {
+            if (envMenuOpen && envMenuWrap && !envMenuWrap.contains(e.target)) {
+                setEnvMenuOpen(false);
+            }
         });
 
         // =========================================================================
@@ -8643,7 +9158,7 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
         // Last time code (mechanics or skin) was updated in each character's studio (ISO UTC)
         const SKIN_CODE_UPDATED_AT = {
             chief: "2026-11-19T05:00:00Z",
-            lenny: "2026-11-20T08:47:00Z"
+            lenny: "2026-11-20T09:29:00Z"
         };
 
         function formatElapsedCodeUpdate(isoStr) {
@@ -8933,7 +9448,31 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
                     btnBg: "linear-gradient(135deg, rgba(127, 29, 29, 0.48), rgba(15, 23, 42, 0.88))",
                     btnBorder: "rgba(248, 113, 113, 0.58)",
                     btnShadow: "0 0 24px rgba(220, 38, 38, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.12)"
-                }  // Deep Red
+                }, // Deep Red
+                {
+                    skin: 0xf1c27d, primary: 0x2563eb, accent: 0x38bdf8, wire: 0x38bdf8,
+                    bustGlow: "radial-gradient(circle, rgba(29, 98, 224, 0.86) 0%, rgba(12, 54, 148, 0.56) 50%, transparent 76%)",
+                    canvasFilter: "drop-shadow(0 0 26px rgba(37, 99, 235, 0.92)) drop-shadow(0 0 64px rgba(14, 72, 180, 0.86))",
+                    btnBg: "linear-gradient(135deg, rgba(23, 62, 148, 0.48), rgba(15, 23, 42, 0.88))",
+                    btnBorder: "rgba(56, 189, 248, 0.60)",
+                    btnShadow: "0 0 24px rgba(37, 99, 235, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.12)"
+                }, // Deep Blue
+                {
+                    skin: 0xfcd5b5, primary: 0xdb2777, accent: 0xf472b6, wire: 0xf472b6,
+                    bustGlow: "radial-gradient(circle, rgba(190, 24, 110, 0.86) 0%, rgba(112, 14, 68, 0.54) 50%, transparent 76%)",
+                    canvasFilter: "drop-shadow(0 0 26px rgba(219, 39, 119, 0.92)) drop-shadow(0 0 64px rgba(131, 24, 67, 0.86))",
+                    btnBg: "linear-gradient(135deg, rgba(131, 24, 67, 0.48), rgba(15, 23, 42, 0.88))",
+                    btnBorder: "rgba(244, 114, 182, 0.60)",
+                    btnShadow: "0 0 24px rgba(219, 39, 119, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.12)"
+                }, // Deep Pink
+                {
+                    skin: 0xd99b66, primary: 0xca8a04, accent: 0xfacc15, wire: 0xfacc15,
+                    bustGlow: "radial-gradient(circle, rgba(202, 138, 4, 0.86) 0%, rgba(113, 63, 18, 0.56) 50%, transparent 76%)",
+                    canvasFilter: "drop-shadow(0 0 26px rgba(234, 179, 8, 0.92)) drop-shadow(0 0 64px rgba(133, 77, 14, 0.86))",
+                    btnBg: "linear-gradient(135deg, rgba(133, 77, 14, 0.48), rgba(15, 23, 42, 0.88))",
+                    btnBorder: "rgba(250, 204, 21, 0.60)",
+                    btnShadow: "0 0 24px rgba(234, 179, 8, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.12)"
+                }  // Deep Yellow
             ];
             let styleIdx = 0;
             const bustGlowEl = document.getElementById("bust-glow");
@@ -9154,6 +9693,9 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
             if (activeSkinHooks && activeSkinHooks.setAutoLoopPaused) {
                 activeSkinHooks.setAutoLoopPaused(true);
             }
+            if (activeSkinHooks && activeSkinHooks.prepareAttackPose) {
+                activeSkinHooks.prepareAttackPose(atkId);
+            }
             attackShowcase = {
                 atkId,
                 stage: "pre_attack", // "pre_attack" -> "attacking" -> "post_attack"
@@ -9196,6 +9738,9 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
                     attackShowcase.timer -= dt;
                     if (attackShowcase.timer <= 0) {
                         attackShowcase.angleIdx += 1;
+                        if (activeSkinHooks && activeSkinHooks.prepareAttackPose) {
+                            activeSkinHooks.prepareAttackPose(attackShowcase.atkId);
+                        }
                         applyShowcaseShot(attackShowcase.shots[attackShowcase.angleIdx]);
                         attackShowcase.stage = "pre_attack";
                         attackShowcase.timer = 0.2; // 0.2s after new angle starts -> perform attack again
