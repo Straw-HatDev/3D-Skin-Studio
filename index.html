@@ -77,46 +77,61 @@
     <!-- ===================================================================== -->
     <!-- VIEW 1: CLEAN MENU PAGE                                               -->
     <!-- ===================================================================== -->
-    <section id="view-menu" class="h-screen w-screen flex flex-col items-center justify-between px-6 py-10 bg-[#070b14] relative overflow-hidden">
-        <!-- Subtle Ambient Glow -->
-        <div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full bg-sky-500/10 blur-[120px]"></div>
+    <section id="view-menu" class="h-screen w-screen flex flex-col items-center justify-center px-6 py-8 bg-[#070b14] relative overflow-hidden">
+        <!-- Corner & Middle Ambient Glows -->
+        <div class="pointer-events-none absolute -top-28 -left-28 w-[480px] h-[480px] rounded-full bg-indigo-600/28 blur-[125px]"></div>
+        <div class="pointer-events-none absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-violet-600/22 blur-[125px]"></div>
+        <div class="pointer-events-none absolute -bottom-28 -left-24 w-[420px] h-[420px] rounded-full bg-blue-600/22 blur-[125px]"></div>
+        <div class="pointer-events-none absolute -bottom-28 -right-28 w-[480px] h-[480px] rounded-full bg-sky-500/26 blur-[125px]"></div>
+        <div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-sky-500/18 blur-[130px]"></div>
 
-        <div></div>
+        <div class="z-10 flex flex-col items-center gap-5 w-full max-w-sm">
+            <!-- Compact Animated 3D Centerpiece (Shader Sweep Bust + Deep Tight 3D Aura) -->
+            <div class="relative mx-auto flex items-center justify-center">
+                <div id="bust-glow" class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full blur-[68px] transition-all duration-700" style="background: radial-gradient(circle, rgba(16, 168, 82, 0.88) 0%, rgba(6, 95, 46, 0.58) 54%, transparent 78%);"></div>
+                <div id="menu-centerpiece" title="Click to cycle skin style" class="w-[150px] h-[136px] cursor-pointer select-none touch-manipulation flex items-center justify-center relative z-10"></div>
+            </div>
 
-        <div class="z-10 flex flex-col items-center gap-8 w-full max-w-sm">
             <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-center bg-gradient-to-r from-white via-sky-100 to-sky-400 bg-clip-text text-transparent">
                 3D Skin Studio
             </h1>
 
-            <div class="flex flex-col gap-3.5 w-full">
-                <button id="btn-menu-generate" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold text-base shadow-lg shadow-sky-500/25 transition-all active:scale-[0.99]">
-                    Generate New Character
+            <div class="flex flex-col gap-2.5 w-full">
+                <button id="btn-menu-generate" class="w-full py-4 px-6 rounded-2xl text-white font-extrabold tracking-widest text-base backdrop-blur-md border transition-all duration-500 active:scale-[0.98]" style="background: linear-gradient(135deg, rgba(16, 85, 48, 0.46), rgba(15, 23, 42, 0.88)); border-color: rgba(74, 222, 128, 0.58); box-shadow: 0 0 26px rgba(22, 163, 74, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.12);">
+                    SKINS / VFX
                 </button>
-                <button id="btn-menu-characters" class="w-full py-4 px-6 rounded-2xl bg-slate-900/90 hover:bg-slate-800 text-slate-100 border border-slate-700/80 font-bold text-base shadow-lg transition-all active:scale-[0.99]">
-                    Characters
-                </button>
+                <input id="input-menu-upload" type="file" class="sr-only" />
+                <div class="flex items-center justify-between w-full px-2.5 pt-0.5">
+                    <button type="button" class="btn-bgm-toggle p-1 text-slate-400 hover:text-slate-300 bg-transparent border-0 transition active:scale-95 cursor-pointer touch-manipulation" title="Toggle Menu Music" aria-label="Toggle Menu Music">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" fill-opacity="0.22"/>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                            <line class="audio-mute-slash hidden" x1="3" y1="3" x2="21" y2="21" stroke="#ef4444" stroke-width="2.6" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <p class="text-sm sm:text-base font-bold tracking-tight text-slate-400">&copy; ChiefLogic</p>
+                </div>
             </div>
         </div>
-
-        <footer class="z-10 pb-2 text-center">
-            <p class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-400">&copy; ChiefLogic</p>
-        </footer>
     </section>
 
     <!-- ===================================================================== -->
     <!-- VIEW 2: SAVED CHARACTERS PAGE                                         -->
     <!-- ===================================================================== -->
     <section id="view-characters" class="hidden h-screen w-screen flex flex-col bg-[#070b14] overflow-hidden">
-        <header class="px-5 py-4 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-md flex items-center justify-between gap-3 shrink-0">
-            <div class="flex items-center gap-3">
-                <button id="btn-chars-back" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 transition">
-                    &larr; Menu
-                </button>
-                <h2 class="text-base sm:text-lg font-extrabold tracking-tight text-white">Saved Characters</h2>
-            </div>
-            <button id="btn-chars-generate" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-lg shadow-sky-500/20 transition">
-                + Generate New Character
+        <header class="relative px-5 py-4 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-md flex items-center justify-between gap-3 shrink-0">
+            <button id="btn-chars-back" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 transition z-10">
+                &larr; Menu
             </button>
+            <h2 class="absolute left-1/2 -translate-x-1/2 text-base sm:text-lg font-extrabold tracking-tight text-white whitespace-nowrap pointer-events-none">Saved Skins / VFX</h2>
+            <label for="input-menu-upload" id="btn-chars-upload" title="Upload File" class="w-10 h-10 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-lg shadow-sky-500/20 flex items-center justify-center cursor-pointer transition active:scale-95 touch-manipulation z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+            </label>
         </header>
 
         <div class="flex-1 overflow-y-auto p-5 sm:p-8">
@@ -132,41 +147,13 @@
     <!-- FULLSCREEN: 3D Interactive Turntable Viewport -->
     <main class="relative w-full h-full bg-slate-950 flex flex-col">
 
-        <!-- Top Floating Header: Environments, Spin Pause/Play, Customize & Square Home Icon (Right) -->
+        <!-- Top Floating Header: Home, Movie Mode, Play/Pause, Attacks, Customize, Special Effects, Environment -->
         <header class="absolute top-3 left-3 right-3 z-20 flex items-center justify-end gap-2 pointer-events-none">
-            <!-- Top-Right Controls: Environments + Spin Pause/Play + Customize Drawer + Square Home Icon -->
+            <!-- Top-Right Controls: Home + Movie Mode + Spin Pause/Play + Attacks + Customize + Special Effects + Environment -->
             <div class="pointer-events-auto flex flex-wrap items-center justify-end gap-1.5 sm:gap-2">
-                <button id="btn-lighting" class="h-10 px-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl text-xs font-bold text-slate-200 flex items-center gap-1.5 transition">
-                    🌙 Environments
-                </button>
-                <button id="btn-toggle-fx" title="Toggle Special Effects" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-sky-500/40 shadow-xl flex items-center justify-center text-base text-sky-300 transition">
-                    ✨
-                </button>
-                <!-- Sword Attacks Dropdown Button & Folding Attack List Box -->
-                <div id="attacks-menu-wrap" class="relative">
-                    <button id="btn-attacks-menu" title="Character Attacks" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-red-500 hover:text-red-400 transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/>
-                            <line x1="13" y1="19" x2="19" y2="13"/>
-                            <line x1="16" y1="16" x2="20" y2="20"/>
-                            <line x1="19" y1="21" x2="21" y2="19"/>
-                        </svg>
-                    </button>
-                    <div id="attacks-dropdown" class="absolute top-12 right-0 w-64 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-slate-700/80 shadow-2xl p-3 origin-top transition-all duration-200 opacity-0 scale-y-0 pointer-events-none">
-                        <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800">
-                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-300">Attacks</span>
-                            <span id="attacks-char-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30">Lenny</span>
-                        </div>
-                        <div id="attacks-list" class="flex flex-col gap-1.5"></div>
-                    </div>
-                </div>
-                <button id="btn-top-spin" title="Pause Turntable Spin" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-sky-500/40 shadow-xl flex items-center justify-center text-sky-300 transition">
-                    <svg id="icon-spin-pause" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <rect x="6" y="4" width="4" height="16" rx="1"/>
-                        <rect x="14" y="4" width="4" height="16" rx="1"/>
-                    </svg>
-                    <svg id="icon-spin-play" class="hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <polygon points="6,4 20,12 6,20"/>
+                <button id="btn-studio-menu" title="Back to Menu" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-yellow-300 hover:text-yellow-200 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z"/>
                     </svg>
                 </button>
                 <button id="btn-movie-mode" title="Toggle Movie Mode" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-green-400 hover:text-green-300 transition">
@@ -181,13 +168,41 @@
                         <line x1="17" y1="16" x2="22" y2="16"/>
                     </svg>
                 </button>
+                <button id="btn-top-spin" title="Pause Turntable Spin" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-sky-500/40 shadow-xl flex items-center justify-center text-sky-300 transition">
+                    <svg id="icon-spin-pause" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="6" y="4" width="4" height="16" rx="1"/>
+                        <rect x="14" y="4" width="4" height="16" rx="1"/>
+                    </svg>
+                    <svg id="icon-spin-play" class="hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="6,4 20,12 6,20"/>
+                    </svg>
+                </button>
+                <!-- Sword Attacks Dropdown Button & Folding Attack List Box -->
+                <div id="attacks-menu-wrap" class="relative">
+                    <button id="btn-attacks-menu" title="Character Attacks" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-red-500 hover:text-red-400 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/>
+                            <line x1="13" y1="19" x2="19" y2="13"/>
+                            <line x1="16" y1="16" x2="20" y2="20"/>
+                            <line x1="19" y1="21" x2="21" y2="19"/>
+                        </svg>
+                    </button>
+                    <div id="attacks-dropdown" class="absolute top-12 left-1/2 -translate-x-1/2 w-64 rounded-2xl bg-slate-900/95 backdrop-blur-xl border border-slate-700/80 shadow-2xl p-3 origin-top transition-all duration-200 opacity-0 scale-y-0 pointer-events-none">
+                        <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800">
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-300">Attacks</span>
+                            <span id="attacks-char-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30">Lenny</span>
+                        </div>
+                        <div id="attacks-list" class="flex flex-col gap-1.5"></div>
+                    </div>
+                </div>
                 <button id="btn-toggle-drawer" title="Customize" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-base text-sky-300 transition">
                     <span>🎨</span>
                 </button>
-                <button id="btn-studio-menu" title="Back to Menu" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-yellow-300 hover:text-yellow-200 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z"/>
-                    </svg>
+                <button id="btn-toggle-fx" title="Toggle Special Effects" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-sky-500/40 shadow-xl flex items-center justify-center text-base text-sky-300 transition">
+                    ✨
+                </button>
+                <button id="btn-lighting" title="Environment: Grid" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl flex items-center justify-center text-base text-slate-200 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" class="text-sky-300"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
                 </button>
             </div>
         </header>
@@ -198,15 +213,6 @@
 
         <!-- Three.js Canvas Mount -->
         <div id="viewport-container" class="w-full h-full"></div>
-
-        <!-- Bottom Viewport Controls Bar -->
-        <div class="absolute bottom-3 left-3 right-3 z-20 flex flex-wrap items-center justify-end gap-2 pointer-events-none">
-            <div class="hidden sm:flex items-center gap-2 bg-slate-900/80 backdrop-blur-md border border-slate-800 px-3 py-1.5 rounded-xl text-[11px] text-slate-400">
-                <span>Drag to Orbit</span>
-                <span>•</span>
-                <span>Scroll / Pinch to Zoom</span>
-            </div>
-        </div>
     </main>
 
     <!-- RIGHT PULL-OUT / PUT-AWAY DRAWER: Compact Non-Scrolling Inspector -->
@@ -499,25 +505,207 @@
         auraLight.position.set(0, 1.5, 0.7);
         scene.add(auraLight);
 
-        // Studio Turntable Pedestal
+        // Studio Turntable Pedestal (Sleek Sculpted Multi-Tiered Showcase Base)
         const pedestalGroup = new THREE.Group();
         scene.add(pedestalGroup);
 
+        function createPedestalTopTexture() {
+            const c = document.createElement("canvas");
+            c.width = 512;
+            c.height = 512;
+            const ctx = c.getContext("2d");
+            const cx = 256, cy = 256;
+
+            // Smooth obsidian-slate radial sheen
+            const bg = ctx.createRadialGradient(cx, cy, 12, cx, cy, 256);
+            bg.addColorStop(0.0, "#243044");
+            bg.addColorStop(0.42, "#192233");
+            bg.addColorStop(0.78, "#121927");
+            bg.addColorStop(1.0, "#0c111c");
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, 512, 512);
+
+            // Subtle anisotropic radial sheen wedges (clean brushed turntable look)
+            for (let i = 0; i < 180; i++) {
+                const a = (i / 180) * Math.PI * 2;
+                const alpha = 0.012 + 0.018 * Math.pow(Math.sin(a * 2 + 0.6), 2);
+                ctx.strokeStyle = `rgba(186, 214, 255, ${alpha.toFixed(4)})`;
+                ctx.lineWidth = 1.6;
+                ctx.beginPath();
+                ctx.moveTo(cx + Math.cos(a) * 18, cy + Math.sin(a) * 18);
+                ctx.lineTo(cx + Math.cos(a) * 246, cy + Math.sin(a) * 246);
+                ctx.stroke();
+            }
+
+            // Fine concentric machined grooves
+            const grooves = [
+                { r: 62, w: 1.0, a: 0.14 },
+                { r: 122, w: 1.2, a: 0.18 },
+                { r: 184, w: 1.2, a: 0.22 },
+                { r: 214, w: 1.6, a: 0.28 },
+                { r: 236, w: 2.0, a: 0.34 }
+            ];
+            grooves.forEach(g => {
+                ctx.strokeStyle = `rgba(148, 178, 218, ${g.a})`;
+                ctx.lineWidth = g.w;
+                ctx.beginPath();
+                ctx.arc(cx, cy, g.r, 0, Math.PI * 2);
+                ctx.stroke();
+            });
+
+            // Clean precision degree ticks around outer perimeter
+            for (let i = 0; i < 72; i++) {
+                const a = (i / 72) * Math.PI * 2;
+                const isMajor = i % 18 === 0;
+                const isMid = i % 6 === 0;
+                const rIn = isMajor ? 218 : (isMid ? 223 : 228);
+                const rOut = 234;
+                ctx.strokeStyle = isMajor ? "rgba(226, 240, 255, 0.42)" : (isMid ? "rgba(186, 214, 255, 0.25)" : "rgba(148, 178, 218, 0.14)");
+                ctx.lineWidth = isMajor ? 2.4 : (isMid ? 1.5 : 1.0);
+                ctx.beginPath();
+                ctx.moveTo(cx + Math.cos(a) * rIn, cy + Math.sin(a) * rIn);
+                ctx.lineTo(cx + Math.cos(a) * rOut, cy + Math.sin(a) * rOut);
+                ctx.stroke();
+            }
+
+            const tex = new THREE.CanvasTexture(c);
+            tex.anisotropy = 4;
+            return tex;
+        }
+
+        function createPedestalHaloTexture() {
+            const c = document.createElement("canvas");
+            c.width = 256;
+            c.height = 256;
+            const ctx = c.getContext("2d");
+            const g = ctx.createRadialGradient(128, 128, 86, 128, 128, 126);
+            g.addColorStop(0.0, "rgba(255,255,255,0.0)");
+            g.addColorStop(0.28, "rgba(255,255,255,0.42)");
+            g.addColorStop(0.58, "rgba(255,255,255,0.14)");
+            g.addColorStop(1.0, "rgba(255,255,255,0.0)");
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, 256, 256);
+            return new THREE.CanvasTexture(c);
+        }
+
+        // Smooth 96-segment sculpted lathe body (flush from floor y=-0.18 up to deck y=0.0)
+        const pedestalProfile = [
+            new THREE.Vector2(0.0, -0.18),
+            new THREE.Vector2(1.80, -0.18),
+            new THREE.Vector2(1.83, -0.172),
+            new THREE.Vector2(1.82, -0.160),
+            new THREE.Vector2(1.75, -0.148),
+            new THREE.Vector2(1.79, -0.132),
+            new THREE.Vector2(1.80, -0.112),
+            new THREE.Vector2(1.77, -0.092),
+            new THREE.Vector2(1.71, -0.072),
+            new THREE.Vector2(1.65, -0.062),
+            new THREE.Vector2(1.65, -0.044),
+            new THREE.Vector2(1.69, -0.034),
+            new THREE.Vector2(1.67, -0.016),
+            new THREE.Vector2(1.63, -0.005),
+            new THREE.Vector2(1.56, -0.001),
+            new THREE.Vector2(0.0, -0.001)
+        ];
+        const pedestalBodyMat = new THREE.MeshStandardMaterial({
+            color: 0x111827,
+            metalness: 0.78,
+            roughness: 0.24
+        });
         const pedestalBase = new THREE.Mesh(
-            new THREE.CylinderGeometry(1.55, 1.72, 0.18, 48),
-            new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.65, roughness: 0.28 })
+            new THREE.LatheGeometry(pedestalProfile, 96),
+            pedestalBodyMat
         );
-        pedestalBase.position.y = -0.09;
         pedestalBase.receiveShadow = true;
+        pedestalBase.castShadow = true;
         pedestalGroup.add(pedestalBase);
 
+        // Satin brushed titanium chamfered outer collar
+        const collarProfile = [
+            new THREE.Vector2(1.535, -0.001),
+            new THREE.Vector2(1.615, -0.001),
+            new THREE.Vector2(1.655, -0.011),
+            new THREE.Vector2(1.682, -0.028),
+            new THREE.Vector2(1.662, -0.036),
+            new THREE.Vector2(1.535, -0.012)
+        ];
+        const pedestalCollar = new THREE.Mesh(
+            new THREE.LatheGeometry(collarProfile, 96),
+            new THREE.MeshStandardMaterial({
+                color: 0x334155,
+                metalness: 0.88,
+                roughness: 0.18
+            })
+        );
+        pedestalCollar.receiveShadow = true;
+        pedestalGroup.add(pedestalCollar);
+
+        // Smooth machined obsidian top deck (flush at y=0.001 under boots & floor aura rings)
+        const pedestalTopDeck = new THREE.Mesh(
+            new THREE.CircleGeometry(1.535, 96),
+            new THREE.MeshStandardMaterial({
+                map: createPedestalTopTexture(),
+                color: 0xffffff,
+                metalness: 0.62,
+                roughness: 0.26
+            })
+        );
+        pedestalTopDeck.rotation.x = -Math.PI / 2;
+        pedestalTopDeck.position.y = 0.001;
+        pedestalTopDeck.receiveShadow = true;
+        pedestalGroup.add(pedestalTopDeck);
+
+        // Shared glowing accent material (auto-synced with state.accentColor in rebuildActiveSkin)
+        const pedestalTrimMat = new THREE.MeshStandardMaterial({
+            color: 0x38bdf8,
+            emissive: 0x0284c7,
+            emissiveIntensity: 1.15,
+            roughness: 0.18,
+            metalness: 0.25
+        });
+
+        // Primary crisp recessed top accent ring
         const pedestalTrim = new THREE.Mesh(
-            new THREE.TorusGeometry(1.58, 0.03, 16, 64),
-            new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.9 })
+            new THREE.TorusGeometry(1.548, 0.013, 16, 96),
+            pedestalTrimMat
         );
         pedestalTrim.rotation.x = Math.PI / 2;
-        pedestalTrim.position.y = 0.01;
+        pedestalTrim.position.y = 0.001;
         pedestalGroup.add(pedestalTrim);
+
+        // Recessed mid-waist precision glow strip
+        const pedestalMidGlow = new THREE.Mesh(
+            new THREE.TorusGeometry(1.656, 0.009, 12, 96),
+            pedestalTrimMat
+        );
+        pedestalMidGlow.rotation.x = Math.PI / 2;
+        pedestalMidGlow.position.y = -0.053;
+        pedestalGroup.add(pedestalMidGlow);
+
+        // Sleek under-rim floating studio glow ring
+        const pedestalUnderGlow = new THREE.Mesh(
+            new THREE.TorusGeometry(1.768, 0.012, 14, 96),
+            pedestalTrimMat
+        );
+        pedestalUnderGlow.rotation.x = Math.PI / 2;
+        pedestalUnderGlow.position.y = -0.154;
+        pedestalGroup.add(pedestalUnderGlow);
+
+        // Soft floor under-glow halo just above the ground plane
+        const pedestalFloorHalo = new THREE.Mesh(
+            new THREE.CircleGeometry(2.18, 72),
+            new THREE.MeshBasicMaterial({
+                map: createPedestalHaloTexture(),
+                color: 0x38bdf8,
+                transparent: true,
+                opacity: 0.34,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false
+            })
+        );
+        pedestalFloorHalo.rotation.x = -Math.PI / 2;
+        pedestalFloorHalo.position.y = -0.175;
+        pedestalGroup.add(pedestalFloorHalo);
 
         const gridHelper = new THREE.GridHelper(18, 24, 0x1e293b, 0x0f172a);
         gridHelper.position.y = -0.18;
@@ -587,24 +775,24 @@
             c.width = 512;
             c.height = 512;
             const ctx = c.getContext("2d");
-            ctx.fillStyle = "#2d6a30";
+            ctx.fillStyle = "#19421d";
             ctx.fillRect(0, 0, 512, 512);
 
-            // Dappled sunlight & rich moss / clover patches
+            // Deep forest moss & shaded clover patches
             for (let i = 0; i < 420; i++) {
                 const x = Math.random() * 512;
                 const y = Math.random() * 512;
                 const r = 6 + Math.random() * 26;
-                const tones = ["rgba(74, 158, 63, 0.35)", "rgba(32, 92, 38, 0.40)", "rgba(118, 185, 71, 0.25)", "rgba(62, 114, 48, 0.35)"];
+                const tones = ["rgba(34, 88, 38, 0.42)", "rgba(18, 56, 22, 0.48)", "rgba(48, 108, 45, 0.28)", "rgba(24, 68, 28, 0.44)"];
                 ctx.fillStyle = tones[i % tones.length];
                 ctx.beginPath();
                 ctx.arc(x, y, r, 0, Math.PI * 2);
                 ctx.fill();
             }
-            // Subtle earthy sunlit clearing center beneath pedestal
+            // Subtle earthy clearing center beneath pedestal
             const centerGrad = ctx.createRadialGradient(256, 256, 12, 256, 256, 95);
-            centerGrad.addColorStop(0, "rgba(101, 82, 56, 0.42)");
-            centerGrad.addColorStop(0.65, "rgba(74, 124, 58, 0.20)");
+            centerGrad.addColorStop(0, "rgba(74, 58, 38, 0.44)");
+            centerGrad.addColorStop(0.65, "rgba(34, 74, 32, 0.24)");
             centerGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
             ctx.fillStyle = centerGrad;
             ctx.fillRect(0, 0, 512, 512);
@@ -711,7 +899,7 @@
                 const oakMat1 = new THREE.MeshStandardMaterial({ color: 0x388e3c, roughness: 0.8 });
                 const oakMat2 = new THREE.MeshStandardMaterial({ color: 0x558b2f, roughness: 0.82 });
                 const sakuraMat = new THREE.MeshStandardMaterial({ color: 0xf9a8d4, roughness: 0.75 });
-                const bushMat = new THREE.MeshStandardMaterial({ color: 0x43a047, roughness: 0.85 });
+                const bushMat = new THREE.MeshStandardMaterial({ color: 0x26632a, roughness: 0.85 });
                 const fernMat = new THREE.MeshStandardMaterial({ color: 0x4caf50, roughness: 0.78, side: THREE.DoubleSide });
                 const rockMat = new THREE.MeshStandardMaterial({ color: 0x64748b, roughness: 0.9 });
                 const mossRockMat = new THREE.MeshStandardMaterial({ color: 0x4b5563, roughness: 0.92 });
@@ -3683,7 +3871,11 @@
                 rig.skinMat.color.set(hex);
             }
 
-            return { group: rig.group, update, triggerAttack, getAttacks, setFXVisible, setSkinTone };
+            function getAttackProgress() {
+                return chiefAttack ? chiefAtkProgress : null;
+            }
+
+            return { group: rig.group, update, triggerAttack, getAttacks, getAttackProgress, setFXVisible, setSkinTone };
         }
 
         // -------------------------------------------------------------------------
@@ -4146,7 +4338,38 @@
                 sGroup.add(sideGem);
             });
 
-            // 3. Sode (Segmented Layered Shoulder Pauldrons), Kote Bracers & Tekko Hand Guards
+            // 3. Sode (Curved Beveled Layered Shoulder Pauldrons), Kote Bracers & Tekko Hand Guards
+            const sodeUpVec = new THREE.Vector3(0, 1, 0);
+            function createCurvedSodeGeo(rIn, rOut, height, arcHalf, side, xCenter = -0.22) {
+                const segs = 16;
+                const shape = new THREE.Shape();
+                for (let i = 0; i <= segs; i++) {
+                    const a = -arcHalf + (i / segs) * (arcHalf * 2);
+                    const px = side * (xCenter + rOut * Math.cos(a));
+                    const py = rOut * Math.sin(a);
+                    if (i === 0) shape.moveTo(px, py);
+                    else shape.lineTo(px, py);
+                }
+                for (let i = segs; i >= 0; i--) {
+                    const a = -arcHalf + (i / segs) * (arcHalf * 2);
+                    const px = side * (xCenter + rIn * Math.cos(a));
+                    const py = rIn * Math.sin(a);
+                    shape.lineTo(px, py);
+                }
+                shape.closePath();
+                const geo = new THREE.ExtrudeGeometry(shape, {
+                    depth: height,
+                    bevelEnabled: true,
+                    bevelThickness: 0.008,
+                    bevelSize: 0.006,
+                    bevelSegments: 2,
+                    curveSegments: 16
+                });
+                geo.translate(0, 0, -height / 2);
+                geo.rotateX(-Math.PI / 2);
+                return geo;
+            }
+
             [-1, 1].forEach(side => {
                 const armPivot = side === -1 ? rig.leftArmPivot : rig.rightArmPivot;
                 const sodeGroup = new THREE.Group();
@@ -4157,46 +4380,67 @@
                 // Slightly less sharp tapered protruding gold Samurai shoulder studs (byo)
                 const studGeo = new THREE.CylinderGeometry(0.0085, 0.033, 0.086, 8);
                 const studBaseGeo = new THREE.CylinderGeometry(0.036, 0.040, 0.016, 8);
+                const xCenter = -0.22;
 
-                // Top curved shoulder cap (kanmuri-ita) + 3 protruding top studs each side
-                const topCap = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.05, 0.50), armorGold);
-                topCap.position.set(side * -0.01, 0.095, 0);
+                // Top curved & beveled shoulder cap (kanmuri-ita) + 3 protruding top studs each side
+                const topCap = new THREE.Mesh(
+                    createCurvedSodeGeo(0.18, 0.305, 0.040, 0.90, side, xCenter),
+                    armorGold
+                );
+                topCap.position.set(0, 0.095, 0);
+                topCap.castShadow = true;
                 sodeGroup.add(topCap);
 
-                [-0.15, 0, 0.15].forEach(sz => {
+                [-0.50, 0, 0.50].forEach(ang => {
+                    const rMid = 0.245;
+                    const tx = side * (xCenter + rMid * Math.cos(ang));
+                    const tz = -rMid * Math.sin(ang);
                     const topBase = new THREE.Mesh(studBaseGeo, armorGold);
-                    topBase.position.set(side * -0.01, 0.124, sz);
+                    topBase.position.set(tx, 0.126, tz);
                     sodeGroup.add(topBase);
 
                     const topStud = new THREE.Mesh(studGeo, armorGold);
-                    topStud.position.set(side * -0.01, 0.167, sz);
+                    topStud.position.set(tx, 0.169, tz);
                     topStud.castShadow = true;
                     sodeGroup.add(topStud);
                 });
 
                 for (let tier = 0; tier < 3; tier++) {
+                    const rIn = 0.195 + tier * 0.018;
+                    const rOut = 0.295 + tier * 0.018;
+                    const ty = -tier * 0.135;
+
                     const plate = new THREE.Mesh(
-                        new THREE.BoxGeometry(0.12, 0.16, 0.48),
+                        createCurvedSodeGeo(rIn, rOut, 0.145, 0.88, side, xCenter),
                         tier === 1 ? armorObsidian : armorCrimson
                     );
-                    plate.position.set(side * (tier * 0.02), -tier * 0.14, 0);
+                    plate.position.set(0, ty, 0);
                     plate.castShadow = true;
                     sodeGroup.add(plate);
 
-                    const trim = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.03, 0.5), armorGold);
-                    trim.position.set(side * (tier * 0.02), -tier * 0.14 - 0.07, 0);
+                    const trim = new THREE.Mesh(
+                        createCurvedSodeGeo(rIn - 0.004, rOut + 0.008, 0.024, 0.90, side, xCenter),
+                        armorGold
+                    );
+                    trim.position.set(0, ty - 0.068, 0);
                     sodeGroup.add(trim);
 
-                    // Protruding gold Samurai shoulder studs along each sode tier
-                    [-0.15, 0, 0.15].forEach(sz => {
+                    // Protruding gold Samurai shoulder studs following the curved sode contour
+                    [-0.52, 0, 0.52].forEach(ang => {
+                        const nx = side * Math.cos(ang);
+                        const nz = -Math.sin(ang);
+                        const normVec = new THREE.Vector3(nx, 0, nz).normalize();
+                        const sx = side * (xCenter + (rOut + 0.008) * Math.cos(ang));
+                        const sz = -(rOut + 0.008) * Math.sin(ang);
+
                         const base = new THREE.Mesh(studBaseGeo, armorGold);
-                        base.position.set(side * (tier * 0.02 + 0.062), -tier * 0.14 + 0.01, sz);
-                        base.rotation.z = side * -Math.PI / 2;
+                        base.position.set(sx + normVec.x * 0.006, ty + 0.01, sz + normVec.z * 0.006);
+                        base.quaternion.setFromUnitVectors(sodeUpVec, normVec);
                         sodeGroup.add(base);
 
                         const stud = new THREE.Mesh(studGeo, armorGold);
-                        stud.position.set(side * (tier * 0.02 + 0.104), -tier * 0.14 + 0.01, sz);
-                        stud.rotation.z = side * -Math.PI / 2;
+                        stud.position.set(sx + normVec.x * 0.048, ty + 0.01, sz + normVec.z * 0.048);
+                        stud.quaternion.setFromUnitVectors(sodeUpVec, normVec);
                         stud.castShadow = true;
                         sodeGroup.add(stud);
                     });
@@ -6382,7 +6626,7 @@
                     { id: "slash1", name: "Dimension Slash", desc: "Dark purple crescent swipe" },
                     { id: "slash2", name: "Plasma Slice", desc: "Blue sphere to green blast" },
                     { id: "sheath", name: "Sheath", desc: "Two-handed flip & slam" },
-                    { id: "unsheath", name: "Unsheath", desc: "Swift curved draw" }
+                    { id: "unsheath", name: "Draw", desc: "Swift curved draw" }
                 ];
             }
 
@@ -6421,6 +6665,15 @@
                 return t === 0 ? 0 : Math.pow(2, 10 * t - 10);
             }
 
+            let autoLoopPaused = false;
+            function setAutoLoopPaused(paused) {
+                autoLoopPaused = paused;
+            }
+
+            function getAttackProgress() {
+                return currentAttack ? attackProgress : null;
+            }
+
             function triggerAttack(type) {
                 if (type === "slash1" || type === "slash2" || type === "sheath") {
                     ensureKatanaInHand();
@@ -6441,7 +6694,7 @@
                 updateSamuraiFX(dt, elapsed, isCombat ? 2.4 : 1.0);
 
                 // Automated cycle: Dimension Slash (slash1) -> 2s -> Plasma Slice (slash2) -> 2s -> Sheath -> 3s -> Unsheath -> 2s -> repeat
-                if (currentAttack === null && spd > 0) {
+                if (currentAttack === null && spd > 0 && !autoLoopPaused) {
                     attackCooldown -= dt;
                     if (attackCooldown <= 0) {
                         triggerAttack(ATTACK_LOOP[loopIdx]);
@@ -7277,7 +7530,7 @@
                 rig.skinMat.color.set(hex);
             }
 
-            return { group: samuraiRoot, update, triggerAttack, getAttacks, setFXVisible, setSkinTone };
+            return { group: samuraiRoot, update, triggerAttack, getAttacks, getAttackProgress, setAutoLoopPaused, setFXVisible, setSkinTone };
         }
 
         // =========================================================================
@@ -7295,6 +7548,9 @@
             auraLight.color.set(state.accentColor);
             pedestalTrim.material.color.set(state.accentColor);
             pedestalTrim.material.emissive.set(state.accentColor);
+            if (typeof pedestalFloorHalo !== "undefined") {
+                pedestalFloorHalo.material.color.set(state.accentColor);
+            }
 
             renderShirtDecalTexture(clock.getElapsedTime());
             if (typeof renderAttacksDropdown === "function") {
@@ -7677,29 +7933,30 @@
 
             attacks.forEach(atk => {
                 const row = document.createElement("div");
-                row.className = "flex items-center justify-between gap-2.5 px-2.5 py-2 rounded-xl bg-slate-800/70 hover:bg-slate-800 border border-slate-700/60 transition";
+                if (atk.id === "slash1") {
+                    row.className = "flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-xl bg-purple-900/75 hover:bg-purple-800/80 border border-purple-500/60 transition";
+                } else if (atk.id === "slash2") {
+                    row.className = "flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-xl bg-blue-800/80 hover:bg-blue-700/85 border border-blue-400/60 transition";
+                } else {
+                    row.className = "flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-xl bg-slate-800/75 hover:bg-slate-800 border border-slate-700/60 transition";
+                }
 
                 const info = document.createElement("div");
                 info.className = "min-w-0";
                 const title = document.createElement("div");
-                title.className = "text-xs font-bold text-slate-100 truncate";
+                title.className = "text-sm font-extrabold tracking-tight text-white truncate";
                 title.innerText = atk.name;
-                const desc = document.createElement("div");
-                desc.className = "text-[10px] text-slate-400 truncate";
-                desc.innerText = atk.desc || "";
                 info.appendChild(title);
-                if (atk.desc) info.appendChild(desc);
 
                 const playBtn = document.createElement("button");
                 playBtn.type = "button";
                 playBtn.title = "Play " + atk.name;
-                playBtn.className = "w-8 h-8 rounded-lg bg-blue-500 hover:bg-blue-400 active:scale-95 text-white shadow-md shadow-blue-500/30 flex items-center justify-center shrink-0 transition";
+                playBtn.className = "w-8 h-8 rounded-lg bg-red-500 hover:bg-red-400 active:scale-95 text-white shadow-md shadow-red-500/30 flex items-center justify-center shrink-0 transition";
                 playBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="7,4 20,12 7,20"/></svg>`;
                 playBtn.addEventListener("click", (ev) => {
                     ev.stopPropagation();
-                    if (activeSkinHooks && activeSkinHooks.triggerAttack) {
-                        activeSkinHooks.triggerAttack(atk.id);
-                    }
+                    setAttacksMenuOpen(false);
+                    startSelectedAttackShowcase(atk.id);
                 });
 
                 row.appendChild(info);
@@ -7715,20 +7972,30 @@
 
         const ENV_ORDER = ["dusk", "forest", "city", "starry", "fire", "dojo", "glacier"];
         const ENV_LABELS = {
-            dusk: "🌙 Environments",
-            forest: "🌲 Forest",
-            city: "🏙️ City",
-            starry: "🌌 Starry Night",
-            fire: "🔥 Fire",
-            dojo: "⛩️ Dojo",
-            glacier: "❄️ Glacier"
+            dusk: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" class="text-sky-300"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`,
+            forest: "🌲",
+            city: "🏙️",
+            starry: "🌌",
+            fire: "🔥",
+            dojo: "⛩️",
+            glacier: "❄️"
+        };
+        const ENV_TITLES = {
+            dusk: "Environment: Default Grid",
+            forest: "Environment: Forest",
+            city: "Environment: City",
+            starry: "Environment: Starry Night",
+            fire: "Environment: Fire",
+            dojo: "Environment: Dojo",
+            glacier: "Environment: Glacier"
         };
 
         document.getElementById("btn-lighting").addEventListener("click", (e) => {
             const nextIdx = (ENV_ORDER.indexOf(state.environment) + 1) % ENV_ORDER.length;
             state.environment = ENV_ORDER[nextIdx];
             buildEnvironment(state.environment);
-            e.currentTarget.innerText = ENV_LABELS[state.environment];
+            e.currentTarget.innerHTML = ENV_LABELS[state.environment];
+            e.currentTarget.title = ENV_TITLES[state.environment];
         });
 
         // =========================================================================
@@ -8014,10 +8281,251 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
             renderer.setSize(w, h);
         }
 
+        // Procedural Chill Upbeat Lo-Fi / Studio Groove for Menu & Saved Skins Pages
+        const MenuBgm = (() => {
+            let ctx = null;
+            let masterGain = null;
+            let noiseBuffer = null;
+            let stepTimer = null;
+            let isMuted = false;
+            let isPlaying = false;
+            let currentViewName = "menu";
+            let step = 0;
+
+            // 104 BPM -> 16th note = ~144ms
+            const STEP_MS = 144;
+
+            // Uplifting Chill Progression: Cmaj9 -> Am9 -> Fmaj9 -> G13 (16 steps per bar)
+            const BARS = [
+                { root: 130.81, chord: [261.63, 329.63, 392.00, 493.88, 587.33], mel: { 0: 783.99, 3: 659.25, 6: 587.33, 8: 659.25, 11: 783.99, 14: 1046.50 } },
+                { root: 110.00, chord: [220.00, 261.63, 329.63, 392.00, 493.88], mel: { 0: 880.00, 3: 783.99, 6: 659.25, 10: 587.33, 12: 659.25, 14: 783.99 } },
+                { root: 87.31,  chord: [174.61, 220.00, 261.63, 329.63, 392.00], mel: { 0: 659.25, 2: 783.99, 6: 880.00, 8: 783.99, 11: 659.25, 14: 523.25 } },
+                { root: 98.00,  chord: [196.00, 246.94, 293.66, 349.23, 440.00], mel: { 0: 587.33, 3: 659.25, 6: 783.99, 10: 880.00, 12: 783.99, 14: 659.25 } }
+            ];
+
+            function ensureCtx() {
+                if (!ctx) {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioCtx) return false;
+                    ctx = new AudioCtx();
+                    masterGain = ctx.createGain();
+                    masterGain.gain.value = 0.0001;
+                    masterGain.connect(ctx.destination);
+
+                    // Pre-generate short white noise buffer for crisp hi-hat & soft snare
+                    const len = Math.floor(ctx.sampleRate * 0.2);
+                    noiseBuffer = ctx.createBuffer(1, len, ctx.sampleRate);
+                    const data = noiseBuffer.getChannelData(0);
+                    for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+                }
+                if (ctx.state === "suspended") {
+                    ctx.resume().catch(() => {});
+                }
+                return true;
+            }
+
+            function playKick(now) {
+                const osc = ctx.createOscillator();
+                const g = ctx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(132, now);
+                osc.frequency.exponentialRampToValueAtTime(44, now + 0.11);
+                g.gain.setValueAtTime(0.26, now);
+                g.gain.exponentialRampToValueAtTime(0.0001, now + 0.19);
+                osc.connect(g);
+                g.connect(masterGain);
+                osc.start(now);
+                osc.stop(now + 0.2);
+            }
+
+            function playSnare(now) {
+                if (!noiseBuffer) return;
+                const src = ctx.createBufferSource();
+                src.buffer = noiseBuffer;
+                const hp = ctx.createBiquadFilter();
+                hp.type = "bandpass";
+                hp.frequency.setValueAtTime(1900, now);
+                hp.Q.value = 0.9;
+                const g = ctx.createGain();
+                g.gain.setValueAtTime(0.09, now);
+                g.gain.exponentialRampToValueAtTime(0.0001, now + 0.11);
+                src.connect(hp);
+                hp.connect(g);
+                g.connect(masterGain);
+                src.start(now);
+                src.stop(now + 0.12);
+            }
+
+            function playHat(now, accent) {
+                if (!noiseBuffer) return;
+                const src = ctx.createBufferSource();
+                src.buffer = noiseBuffer;
+                const hp = ctx.createBiquadFilter();
+                hp.type = "highpass";
+                hp.frequency.setValueAtTime(7200, now);
+                const g = ctx.createGain();
+                g.gain.setValueAtTime(accent ? 0.042 : 0.022, now);
+                g.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
+                src.connect(hp);
+                hp.connect(g);
+                g.connect(masterGain);
+                src.start(now);
+                src.stop(now + 0.05);
+            }
+
+            function playBass(now, freq, dur) {
+                const osc = ctx.createOscillator();
+                const lp = ctx.createBiquadFilter();
+                const g = ctx.createGain();
+                osc.type = "triangle";
+                osc.frequency.setValueAtTime(freq, now);
+                lp.type = "lowpass";
+                lp.frequency.setValueAtTime(340, now);
+                g.gain.setValueAtTime(0.0001, now);
+                g.gain.linearRampToValueAtTime(0.18, now + 0.015);
+                g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+                osc.connect(lp);
+                lp.connect(g);
+                g.connect(masterGain);
+                osc.start(now);
+                osc.stop(now + dur + 0.02);
+            }
+
+            function playRhodesChord(now, notes, dur) {
+                const lp = ctx.createBiquadFilter();
+                lp.type = "lowpass";
+                lp.frequency.setValueAtTime(1650, now);
+                lp.frequency.exponentialRampToValueAtTime(820, now + dur);
+
+                const g = ctx.createGain();
+                g.gain.setValueAtTime(0.0001, now);
+                g.gain.linearRampToValueAtTime(0.075, now + 0.022);
+                g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+                lp.connect(g);
+                g.connect(masterGain);
+
+                notes.slice(0, 4).forEach((freq, i) => {
+                    const osc = ctx.createOscillator();
+                    osc.type = i % 2 === 0 ? "triangle" : "sine";
+                    osc.frequency.setValueAtTime(freq, now);
+                    osc.detune.setValueAtTime((i - 1.5) * 3.5, now);
+                    osc.connect(lp);
+                    osc.start(now);
+                    osc.stop(now + dur + 0.02);
+                });
+            }
+
+            function playPluck(now, freq) {
+                const osc = ctx.createOscillator();
+                const lp = ctx.createBiquadFilter();
+                const g = ctx.createGain();
+                osc.type = "triangle";
+                osc.frequency.setValueAtTime(freq, now);
+                lp.type = "lowpass";
+                lp.frequency.setValueAtTime(2800, now);
+                lp.frequency.exponentialRampToValueAtTime(900, now + 0.24);
+                g.gain.setValueAtTime(0.0001, now);
+                g.gain.linearRampToValueAtTime(0.055, now + 0.012);
+                g.gain.exponentialRampToValueAtTime(0.0001, now + 0.28);
+                osc.connect(lp);
+                lp.connect(g);
+                g.connect(masterGain);
+                osc.start(now);
+                osc.stop(now + 0.30);
+            }
+
+            function tickStep() {
+                if (!ctx || !masterGain || !isPlaying || isMuted) return;
+                const now = ctx.currentTime;
+                const barIdx = Math.floor(step / 16) % BARS.length;
+                const s = step % 16;
+                const bar = BARS[barIdx];
+
+                // Chill upbeat drum groove
+                if (s === 0 || s === 6 || s === 10) playKick(now);
+                if (s === 4 || s === 12) playSnare(now);
+                if (s % 2 === 0) playHat(now, s % 4 === 2);
+
+                // Bouncy bassline
+                if (s === 0 || s === 10) playBass(now, bar.root, 0.38);
+                else if (s === 6) playBass(now, bar.root * 1.5, 0.22);
+                else if (s === 14) playBass(now, bar.root * 1.25, 0.20);
+
+                // Syncopated warm electric-piano chords
+                if (s === 0) playRhodesChord(now, bar.chord, 0.72);
+                else if (s === 6) playRhodesChord(now, bar.chord, 0.44);
+                else if (s === 12) playRhodesChord(now, bar.chord, 0.50);
+
+                // Uplifting soft pluck melody
+                if (bar.mel[s]) playPluck(now, bar.mel[s]);
+
+                step++;
+            }
+
+            function syncIcons() {
+                document.querySelectorAll(".btn-bgm-toggle").forEach(btn => {
+                    const slash = btn.querySelector(".audio-mute-slash");
+                    if (slash) slash.classList.toggle("hidden", !isMuted);
+                    btn.title = isMuted ? "Unmute Menu Music" : "Mute Menu Music";
+                });
+            }
+
+            function updatePlayback() {
+                const shouldPlay = !isMuted && (currentViewName === "menu" || currentViewName === "characters");
+                if (shouldPlay) {
+                    if (!ensureCtx()) return;
+                    if (!isPlaying) {
+                        isPlaying = true;
+                        tickStep();
+                        stepTimer = setInterval(tickStep, STEP_MS);
+                    }
+                    const now = ctx.currentTime;
+                    masterGain.gain.cancelScheduledValues(now);
+                    masterGain.gain.setTargetAtTime(0.85, now, 0.18);
+                } else {
+                    isPlaying = false;
+                    if (stepTimer) { clearInterval(stepTimer); stepTimer = null; }
+                    if (ctx && masterGain) {
+                        const now = ctx.currentTime;
+                        masterGain.gain.cancelScheduledValues(now);
+                        masterGain.gain.setTargetAtTime(0.0001, now, 0.12);
+                    }
+                }
+            }
+
+            document.querySelectorAll(".btn-bgm-toggle").forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    isMuted = !isMuted;
+                    syncIcons();
+                    updatePlayback();
+                });
+            });
+
+            // Unlock Web Audio cleanly on first user interaction
+            const unlockOnce = () => {
+                if (!isMuted && (currentViewName === "menu" || currentViewName === "characters")) {
+                    updatePlayback();
+                }
+                window.removeEventListener("pointerdown", unlockOnce);
+                window.removeEventListener("keydown", unlockOnce);
+            };
+            window.addEventListener("pointerdown", unlockOnce, { passive: true });
+            window.addEventListener("keydown", unlockOnce, { passive: true });
+
+            return {
+                setView(name) {
+                    currentViewName = name;
+                    updatePlayback();
+                }
+            };
+        })();
+
         function showView(name) {
             viewMenu.classList.toggle("hidden", name !== "menu");
             viewCharacters.classList.toggle("hidden", name !== "characters");
             viewStudio.classList.toggle("hidden", name !== "studio");
+            MenuBgm.setView(name);
             if (name === "characters") {
                 renderCharactersGrid();
             } else if (name === "studio") {
@@ -8077,6 +8585,25 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
             showView("studio");
         }
 
+        // Last time code (mechanics or skin) was updated in each character's studio (ISO UTC)
+        const SKIN_CODE_UPDATED_AT = {
+            chief: "2026-11-19T05:00:00Z",
+            lenny: "2026-11-20T07:36:00Z"
+        };
+
+        function formatElapsedCodeUpdate(isoStr) {
+            const ts = Date.parse(isoStr);
+            if (!Number.isFinite(ts)) return "Updated";
+            const diffMs = Math.max(0, Date.now() - ts);
+            const hours = Math.floor(diffMs / 3600000);
+            const days = Math.floor(hours / 24);
+            const weeks = Math.floor(days / 7);
+            if (weeks >= 1) return weeks + (weeks === 1 ? " week ago" : " weeks ago");
+            if (days >= 1) return days + (days === 1 ? " day ago" : " days ago");
+            if (hours >= 1) return hours + (hours === 1 ? " hr ago" : " hrs ago");
+            return "<1 hr ago";
+        }
+
         function renderCharactersGrid() {
             const grid = document.getElementById("characters-grid");
             grid.innerHTML = "";
@@ -8116,24 +8643,36 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
                 card.type = "button";
                 card.className = "group w-full text-left bg-slate-900/90 hover:bg-slate-800/90 active:bg-slate-800 active:scale-[0.98] border border-slate-800 hover:border-sky-500/50 rounded-2xl p-4 flex flex-col justify-between gap-4 transition-all cursor-pointer shadow-lg touch-manipulation select-none";
 
-                const icon = ch.icon || (ch.baseSkin === "lenny" ? "⚔️" : "✨");
-                const subtitle = ch.subtitle || (ch.baseSkin === "lenny" ? "Samurai Custom" : "Magician Custom");
+                const kabutoSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="2 1.5 28 26" fill="none">
+                    <path d="M9.5 11.5C6.5 7.5 6.8 3.8 9.2 2.4C8.4 5.2 9.4 7.8 12.2 10.2" fill="#d97706" stroke="#78350f" stroke-width="0.9" stroke-linejoin="round"/>
+                    <path d="M22.5 11.5C25.5 7.5 25.2 3.8 22.8 2.4C23.6 5.2 22.6 7.8 19.8 10.2" fill="#d97706" stroke="#78350f" stroke-width="0.9" stroke-linejoin="round"/>
+                    <circle cx="16" cy="9.2" r="2.1" fill="#f59e0b" stroke="#78350f" stroke-width="0.9"/>
+                    <path d="M7.5 18.5C7.5 12.8 11.2 9.2 16 9.2C20.8 9.2 24.5 12.8 24.5 18.5H7.5Z" fill="#1e293b" stroke="#0f172a" stroke-width="1.1"/>
+                    <path d="M16 9.2V18.5M11.8 10.5C11.2 13 11 15.8 11 18.5M20.2 10.5C20.8 13 21 15.8 21 18.5" stroke="#475569" stroke-width="0.85"/>
+                    <path d="M6.2 18.5H25.8L27.4 22.2H4.6L6.2 18.5Z" fill="#0f172a"/>
+                    <path d="M5.2 22.2H26.8L28.5 26.2H3.5L5.2 22.2Z" fill="#1e293b" stroke="#0f172a" stroke-width="0.9"/>
+                    <path d="M9.2 19.8H22.8L21.5 24.8H10.5L9.2 19.8Z" fill="#be123c" stroke="#881337" stroke-width="0.8"/>
+                    <path d="M6.2 16.2L4.2 18.4L6.4 20.6" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M25.8 16.2L27.8 18.4L25.6 20.6" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>`;
+                const isLenny = ch.baseSkin === "lenny";
+                const iconHtml = isLenny ? kabutoSvg : `<span>${ch.icon || "✨"}</span>`;
+                const iconBg = isLenny
+                    ? "linear-gradient(135deg, #f9a8d4 0%, #fce7f3 52%, #ffffff 100%)"
+                    : `linear-gradient(135deg, ${ch.primaryColor}, ${ch.accentColor})`;
+                const subtitle = ch.subtitle || (isLenny ? "Samurai Custom" : "Magician Custom");
 
                 card.innerHTML = `
                     <div class="flex items-start justify-between gap-3">
                         <div class="flex items-center gap-3">
-                            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl border border-white/10 shadow-inner shrink-0" style="background: linear-gradient(135deg, ${ch.primaryColor}, ${ch.accentColor});">
-                                <span>${icon}</span>
+                            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl border ${isLenny ? 'border-pink-200/70' : 'border-white/10'} shadow-inner shrink-0" style="background: ${iconBg};">
+                                ${iconHtml}
                             </div>
                             <div>
-                                <h3 class="text-sm font-extrabold text-white group-hover:text-sky-300 transition">${ch.name}</h3>
-                                <p class="text-xs text-slate-400">${subtitle}</p>
+                                <h3 class="text-base font-extrabold text-white group-hover:text-sky-300 transition">${ch.name}</h3>
                             </div>
                         </div>
-                        ${ch.isBuiltin
-                            ? '<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">Preset</span>'
-                            : '<span class="w-7 h-7 shrink-0"></span>'
-                        }
+                        <span class="w-20 h-6 shrink-0"></span>
                     </div>
                     <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
                         <div class="flex items-center gap-1.5">
@@ -8172,6 +8711,34 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
 
                 wrapper.appendChild(card);
 
+                const codeUpdatedIso = SKIN_CODE_UPDATED_AT[ch.baseSkin] || SKIN_CODE_UPDATED_AT.chief;
+                const updateBtn = document.createElement("button");
+                updateBtn.type = "button";
+                const formattedExact = new Date(codeUpdatedIso).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+                updateBtn.title = "Last code update: " + formattedExact;
+                updateBtn.className = "absolute top-3.5 " + (ch.isBuiltin ? "right-3.5" : "right-12") + " z-10 px-2.5 py-1 rounded-full bg-slate-800/95 hover:bg-slate-700 text-[10px] font-bold tracking-wide text-sky-300 border border-slate-700 hover:border-sky-500/50 flex items-center gap-1 transition cursor-pointer shadow-sm touch-manipulation";
+                const clockIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+                const setRelativeLabel = () => {
+                    updateBtn.innerHTML = clockIcon + `<span>${formatElapsedCodeUpdate(codeUpdatedIso)}</span>`;
+                };
+                setRelativeLabel();
+                let showExactTimer = null;
+                updateBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    if (showExactTimer) {
+                        clearTimeout(showExactTimer);
+                        showExactTimer = null;
+                        setRelativeLabel();
+                        return;
+                    }
+                    updateBtn.innerHTML = clockIcon + `<span>${formattedExact}</span>`;
+                    showExactTimer = setTimeout(() => {
+                        showExactTimer = null;
+                        setRelativeLabel();
+                    }, 2600);
+                });
+                wrapper.appendChild(updateBtn);
+
                 if (!ch.isBuiltin) {
                     const delBtn = document.createElement("button");
                     delBtn.type = "button";
@@ -8192,17 +8759,19 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
         }
 
         // Navigation Listeners
-        document.getElementById("btn-menu-generate").addEventListener("click", () => {
-            switchPresetSkin("chief");
-            showView("studio");
-        });
-        document.getElementById("btn-menu-characters").addEventListener("click", () => showView("characters"));
+        document.getElementById("btn-menu-generate").addEventListener("click", () => showView("characters"));
+        const menuUploadInput = document.getElementById("input-menu-upload");
+        if (menuUploadInput) {
+            menuUploadInput.addEventListener("change", (e) => {
+                const file = e.target.files && e.target.files[0];
+                if (!file) return;
+                // Ready for future import handling; reset value so re-selecting same file works
+                e.target.value = "";
+            });
+        }
         document.getElementById("btn-chars-back").addEventListener("click", () => showView("menu"));
-        document.getElementById("btn-chars-generate").addEventListener("click", () => {
-            switchPresetSkin("chief");
-            showView("studio");
-        });
         document.getElementById("btn-studio-menu").addEventListener("click", () => {
+            cancelSelectedAttackShowcase(false);
             if (state.movieMode) setMovieMode(false);
             if (attacksMenuOpen) setAttacksMenuOpen(false);
             showView("menu");
@@ -8254,9 +8823,292 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
         });
 
         // =========================================================================
-        // 10. RESIZE & MAIN ANIMATION LOOP
+        // 10. MENU 3D CENTERPIECE (SHADER SWEEP WIREFRAME <-> PAINTED SKIN BUST)
+        // =========================================================================
+        (function initMenuCenterpiece() {
+            const mount = document.getElementById("menu-centerpiece");
+            if (!mount) return;
+
+            const w = 150, h = 136;
+            const mScene = new THREE.Scene();
+            const mCam = new THREE.PerspectiveCamera(36, w / h, 0.1, 20);
+            mCam.position.set(0, 0.18, 2.55);
+            mCam.lookAt(0, 0.08, 0);
+
+            const mRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
+            mRenderer.setSize(w, h);
+            mRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            mRenderer.localClippingEnabled = true;
+            mRenderer.setClearColor(0x000000, 0);
+            mount.appendChild(mRenderer.domElement);
+
+            mScene.add(new THREE.AmbientLight(0xdbeafe, 0.85));
+            const mKey = new THREE.DirectionalLight(0xffffff, 1.35);
+            mKey.position.set(2.5, 3.5, 3.0);
+            mScene.add(mKey);
+            const mRim = new THREE.DirectionalLight(0x16a34a, 1.65);
+            mRim.position.set(-2.5, 1.5, -2.5);
+            mScene.add(mRim);
+
+            // Clipping planes for live Shader Sweep transition
+            const clipBelow = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0); // keeps y <= scanY (painted)
+            const clipAbove = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);  // keeps y >= scanY (wireframe)
+
+            const COLORWAYS = [
+                {
+                    skin: 0xfcd5b5, primary: 0x16a34a, accent: 0x4ade80, wire: 0x4ade80,
+                    bustGlow: "radial-gradient(circle, rgba(16, 168, 82, 0.88) 0%, rgba(6, 95, 46, 0.58) 54%, transparent 78%)",
+                    canvasFilter: "drop-shadow(0 0 28px rgba(20, 175, 86, 0.94)) drop-shadow(0 0 68px rgba(8, 112, 54, 0.90))",
+                    btnBg: "linear-gradient(135deg, rgba(16, 85, 48, 0.46), rgba(15, 23, 42, 0.88))",
+                    btnBorder: "rgba(74, 222, 128, 0.58)",
+                    btnShadow: "0 0 26px rgba(22, 163, 74, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.12)"
+                }, // Deep Green
+                {
+                    skin: 0xe8b48c, primary: 0x7e22ce, accent: 0xc084fc, wire: 0xc084fc,
+                    bustGlow: "radial-gradient(circle, rgba(107, 33, 168, 0.85) 0%, rgba(59, 7, 100, 0.54) 48%, transparent 74%)",
+                    canvasFilter: "drop-shadow(0 0 26px rgba(126, 34, 206, 0.9)) drop-shadow(0 0 64px rgba(76, 29, 149, 0.85))",
+                    btnBg: "linear-gradient(135deg, rgba(88, 28, 135, 0.48), rgba(15, 23, 42, 0.88))",
+                    btnBorder: "rgba(192, 132, 252, 0.58)",
+                    btnShadow: "0 0 24px rgba(126, 34, 206, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.12)"
+                }, // Deep Purple
+                {
+                    skin: 0xc68642, primary: 0xdc2626, accent: 0xf87171, wire: 0xf87171,
+                    bustGlow: "radial-gradient(circle, rgba(168, 22, 22, 0.84) 0%, rgba(88, 12, 12, 0.52) 48%, transparent 74%)",
+                    canvasFilter: "drop-shadow(0 0 26px rgba(185, 28, 28, 0.9)) drop-shadow(0 0 64px rgba(115, 16, 16, 0.85))",
+                    btnBg: "linear-gradient(135deg, rgba(127, 29, 29, 0.48), rgba(15, 23, 42, 0.88))",
+                    btnBorder: "rgba(248, 113, 113, 0.58)",
+                    btnShadow: "0 0 24px rgba(220, 38, 38, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.12)"
+                }  // Deep Red
+            ];
+            let styleIdx = 0;
+            const bustGlowEl = document.getElementById("bust-glow");
+            const menuSkinsBtn = document.getElementById("btn-menu-generate");
+            mRenderer.domElement.style.transition = "filter 500ms ease";
+            mRenderer.domElement.style.filter = COLORWAYS[0].canvasFilter;
+
+            const bustRoot = new THREE.Group();
+            mScene.add(bustRoot);
+
+            const skinMat = new THREE.MeshStandardMaterial({ color: COLORWAYS[0].skin, roughness: 0.58, clippingPlanes: [clipBelow] });
+            const primaryMat = new THREE.MeshStandardMaterial({ color: COLORWAYS[0].primary, roughness: 0.45, metalness: 0.25, clippingPlanes: [clipBelow] });
+            const accentMat = new THREE.MeshStandardMaterial({ color: COLORWAYS[0].accent, emissive: COLORWAYS[0].accent, emissiveIntensity: 0.72, roughness: 0.25, metalness: 0.75, clippingPlanes: [clipBelow] });
+            const eyeMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.2, clippingPlanes: [clipBelow] });
+            const wireMat = new THREE.MeshBasicMaterial({ color: COLORWAYS[0].wire, wireframe: true, transparent: true, opacity: 0.72, clippingPlanes: [clipAbove] });
+
+            function buildBustMeshes(targetGroup, isWire) {
+                const sM = isWire ? wireMat : skinMat;
+                const pM = isWire ? wireMat : primaryMat;
+                const aM = isWire ? wireMat : accentMat;
+                const eM = isWire ? wireMat : eyeMat;
+
+                // Sculpted rounded head
+                const headProfile = [
+                    new THREE.Vector2(0.00, -0.32),
+                    new THREE.Vector2(0.14, -0.30),
+                    new THREE.Vector2(0.24, -0.23),
+                    new THREE.Vector2(0.32, -0.11),
+                    new THREE.Vector2(0.36, 0.03),
+                    new THREE.Vector2(0.36, 0.16),
+                    new THREE.Vector2(0.31, 0.28),
+                    new THREE.Vector2(0.20, 0.36),
+                    new THREE.Vector2(0.00, 0.39)
+                ];
+                const head = new THREE.Mesh(new THREE.LatheGeometry(headProfile, 22), sM);
+                head.position.y = 0.20;
+                targetGroup.add(head);
+
+                // Neck & stylized armored bust shoulders
+                const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.19, 0.20, 16), sM);
+                neck.position.y = -0.14;
+                targetGroup.add(neck);
+
+                const shoulders = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.46, 0.24, 18), pM);
+                shoulders.scale.set(1.15, 1, 0.75);
+                shoulders.position.y = -0.30;
+                targetGroup.add(shoulders);
+
+                const collar = new THREE.Mesh(new THREE.TorusGeometry(0.24, 0.032, 8, 20), aM);
+                collar.rotation.x = Math.PI / 2;
+                collar.position.y = -0.19;
+                targetGroup.add(collar);
+
+                // Stylized visor / headband crest
+                const band = new THREE.Mesh(new THREE.TorusGeometry(0.355, 0.022, 8, 24), aM);
+                band.rotation.x = Math.PI / 2;
+                band.position.y = 0.34;
+                targetGroup.add(band);
+
+                // Ears & Eyes
+                [-1, 1].forEach(side => {
+                    const ear = new THREE.Mesh(new THREE.SphereGeometry(0.065, 10, 8), sM);
+                    ear.scale.set(0.45, 1.1, 0.75);
+                    ear.position.set(side * 0.345, 0.20, 0);
+                    targetGroup.add(ear);
+
+                    const eye = new THREE.Mesh(new THREE.SphereGeometry(0.055, 10, 8), eM);
+                    eye.scale.set(0.95, 1.15, 0.45);
+                    eye.position.set(side * 0.13, 0.22, 0.34);
+                    eye.rotation.y = side * 0.28;
+                    targetGroup.add(eye);
+                });
+            }
+
+            const paintedGroup = new THREE.Group();
+            const wireGroup = new THREE.Group();
+            buildBustMeshes(paintedGroup, false);
+            buildBustMeshes(wireGroup, true);
+            bustRoot.add(paintedGroup);
+            bustRoot.add(wireGroup);
+
+            // Glowing Horizontal Scanner Beam Ring
+            const scanMat = new THREE.MeshBasicMaterial({
+                color: COLORWAYS[0].accent,
+                transparent: true,
+                opacity: 0.92,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false
+            });
+            const scanRing = new THREE.Mesh(new THREE.TorusGeometry(0.49, 0.016, 10, 40), scanMat);
+            scanRing.rotation.x = Math.PI / 2;
+            mScene.add(scanRing);
+
+            const scanDiscMat = new THREE.MeshBasicMaterial({
+                color: COLORWAYS[0].accent,
+                transparent: true,
+                opacity: 0.18,
+                side: THREE.DoubleSide,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false
+            });
+            const scanDisc = new THREE.Mesh(new THREE.CircleGeometry(0.49, 32), scanDiscMat);
+            scanDisc.rotation.x = -Math.PI / 2;
+            mScene.add(scanDisc);
+
+            // Interactivity: cursor-tracking tilt + click 360° spin bounce cycling 3 skin styles
+            let targetTiltX = 0, targetTiltY = 0;
+            let spinVel = 0, bounceVel = 0, bounceScale = 1;
+
+            viewMenu.addEventListener("pointermove", (e) => {
+                const rect = mount.getBoundingClientRect();
+                const cx = rect.left + rect.width / 2;
+                const cy = rect.top + rect.height / 2;
+                const nx = Math.max(-1, Math.min(1, (e.clientX - cx) / 260));
+                const ny = Math.max(-1, Math.min(1, (e.clientY - cy) / 260));
+                targetTiltY = nx * 0.32;
+                targetTiltX = ny * 0.20;
+            });
+
+            mount.addEventListener("click", () => {
+                styleIdx = (styleIdx + 1) % COLORWAYS.length;
+                const cw = COLORWAYS[styleIdx];
+                skinMat.color.setHex(cw.skin);
+                primaryMat.color.setHex(cw.primary);
+                accentMat.color.setHex(cw.accent);
+                accentMat.emissive.setHex(cw.accent);
+                wireMat.color.setHex(cw.wire);
+                scanMat.color.setHex(cw.accent);
+                scanDiscMat.color.setHex(cw.accent);
+                mRim.color.setHex(cw.primary);
+                if (bustGlowEl && cw.bustGlow) {
+                    bustGlowEl.style.background = cw.bustGlow;
+                }
+                if (cw.canvasFilter) {
+                    mRenderer.domElement.style.filter = cw.canvasFilter;
+                }
+                if (menuSkinsBtn && cw.btnBg) {
+                    menuSkinsBtn.style.background = cw.btnBg;
+                    menuSkinsBtn.style.borderColor = cw.btnBorder;
+                    menuSkinsBtn.style.boxShadow = cw.btnShadow;
+                }
+                spinVel = 14.5;
+                bounceScale = 1.18;
+            });
+
+            const mClock = new THREE.Clock();
+            function animateMenuBust() {
+                requestAnimationFrame(animateMenuBust);
+                if (viewMenu.classList.contains("hidden")) return;
+
+                const dt = Math.min(mClock.getDelta(), 0.05);
+                const t = mClock.getElapsedTime();
+
+                // Zero-gravity float + slow continuous turntable + click 360° spin bounce
+                const floatY = Math.sin(t * 2.2) * 0.055;
+                bustRoot.position.y = floatY;
+                bustRoot.rotation.y += dt * (0.65 + spinVel);
+                spinVel *= Math.pow(0.02, dt);
+
+                bustRoot.rotation.x += (targetTiltX - bustRoot.rotation.x) * Math.min(1, dt * 8);
+                bustRoot.rotation.z += (-targetTiltY * 0.45 - bustRoot.rotation.z) * Math.min(1, dt * 8);
+
+                bounceScale += (1.0 - bounceScale) * Math.min(1, dt * 10);
+                bustRoot.scale.setScalar(bounceScale);
+
+                // Smoothly sweeping horizontal shader-transition scanner beam
+                const scanY = floatY + 0.08 + Math.sin(t * 1.45) * 0.52;
+                clipBelow.constant = scanY;
+                clipAbove.constant = -scanY;
+                scanRing.position.y = scanY;
+                scanDisc.position.y = scanY;
+
+                mRenderer.render(mScene, mCam);
+            }
+            animateMenuBust();
+        })();
+
+        // =========================================================================
+        // 11. RESIZE & MAIN ANIMATION LOOP
         // =========================================================================
         window.addEventListener("resize", resizeViewport);
+
+        let attackShowcase = null;
+
+        function applyShowcaseShot(shot) {
+            spherical.theta = shot.theta;
+            spherical.phi = shot.phi;
+            spherical.radius = shot.radius;
+            spherical.targetY = shot.targetY;
+            spherical.panX = shot.panX || 0;
+            spherical.roll = shot.roll || 0;
+            updateCameraPosition();
+        }
+
+        function cancelSelectedAttackShowcase(restoreCam = false) {
+            if (!attackShowcase) return;
+            if (activeSkinHooks && activeSkinHooks.setAutoLoopPaused) {
+                activeSkinHooks.setAutoLoopPaused(false);
+            }
+            if (restoreCam && !state.movieMode && attackShowcase.prevCam) {
+                spherical = { ...attackShowcase.prevCam };
+                updateCameraPosition();
+            }
+            attackShowcase = null;
+        }
+
+        function startSelectedAttackShowcase(atkId) {
+            cancelSelectedAttackShowcase(false);
+            const sign = Math.random() > 0.5 ? 1 : -1;
+            const shots = [
+                // Angle 1: Straight-on front view showing full character, zooming out during the attack
+                { theta: 0, phi: 1.36, radius: 7.4, targetY: 1.52, panX: 0, roll: 0, dTheta: 0, dPhi: 0, dRadius: 1.45, dTargetY: 0, dPanX: 0 },
+                // Angle 2: Bird's-eye view still shot, decently zoomed out
+                { theta: 0.15 * sign, phi: 0.42, radius: 8.6, targetY: 1.45, panX: 0, roll: 0, dTheta: 0, dPhi: 0, dRadius: 0, dTargetY: 0, dPanX: 0 },
+                // Angle 3: Low angle slightly off to the side looking up (front still visible), panning slowly toward center
+                { theta: 0.58 * sign, phi: 1.66, radius: 6.4, targetY: 1.92, panX: -0.45 * sign, roll: 0, dTheta: -0.32 * sign, dPhi: 0, dRadius: 0, dTargetY: 0, dPanX: 0.45 * sign }
+            ];
+            if (activeSkinHooks && activeSkinHooks.setAutoLoopPaused) {
+                activeSkinHooks.setAutoLoopPaused(true);
+            }
+            attackShowcase = {
+                atkId,
+                stage: "pre_attack", // "pre_attack" -> "attacking" -> "post_attack"
+                timer: 0.4,          // 0.4s initial wait on Angle 1 (0.2s on Angles 2 & 3)
+                angleIdx: 0,
+                shots,
+                prevCam: { ...spherical }
+            };
+            applyShowcaseShot(shots[0]);
+        }
 
         const clock = new THREE.Clock();
         let lastDecalRefresh = 0;
@@ -8266,7 +9118,45 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
             const dt = Math.min(clock.getDelta(), 0.1);
             const elapsed = clock.getElapsedTime();
 
-            if (state.movieMode && !isDraggingOrbit) {
+            if (attackShowcase) {
+                if (attackShowcase.stage === "pre_attack") {
+                    attackShowcase.timer -= dt;
+                    if (attackShowcase.timer <= 0) {
+                        attackShowcase.stage = "attacking";
+                        if (activeSkinHooks && activeSkinHooks.triggerAttack) {
+                            activeSkinHooks.triggerAttack(attackShowcase.atkId);
+                        }
+                    }
+                } else if (attackShowcase.stage === "attacking") {
+                    const prog = (activeSkinHooks && activeSkinHooks.getAttackProgress) ? activeSkinHooks.getAttackProgress() : null;
+                    if (prog === null) {
+                        if (attackShowcase.angleIdx >= 2) {
+                            cancelSelectedAttackShowcase(true);
+                        } else {
+                            attackShowcase.stage = "post_attack";
+                            attackShowcase.timer = 0.1; // 0.1s after attack completes -> cut to next angle
+                        }
+                    }
+                } else if (attackShowcase.stage === "post_attack") {
+                    attackShowcase.timer -= dt;
+                    if (attackShowcase.timer <= 0) {
+                        attackShowcase.angleIdx += 1;
+                        applyShowcaseShot(attackShowcase.shots[attackShowcase.angleIdx]);
+                        attackShowcase.stage = "pre_attack";
+                        attackShowcase.timer = 0.2; // 0.2s after new angle starts -> perform attack again
+                    }
+                }
+
+                if (attackShowcase && !isDraggingOrbit) {
+                    const m = attackShowcase.shots[attackShowcase.angleIdx];
+                    spherical.theta += m.dTheta * dt;
+                    spherical.phi = Math.max(0.12, Math.min(1.74, spherical.phi + m.dPhi * dt));
+                    spherical.radius = Math.max(3.6, Math.min(14.5, spherical.radius + m.dRadius * dt));
+                    spherical.targetY = Math.max(0.75, Math.min(2.75, spherical.targetY + m.dTargetY * dt));
+                    spherical.panX = Math.max(-1.8, Math.min(1.8, (spherical.panX || 0) + (m.dPanX || 0) * dt));
+                    updateCameraPosition();
+                }
+            } else if (state.movieMode && !isDraggingOrbit) {
                 movieShotTimer -= dt;
                 if (movieShotTimer <= 0 || !activeMovieMotion) {
                     cutToNextMovieShot();
