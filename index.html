@@ -17,6 +17,10 @@
             overflow: hidden;
             user-select: none;
             -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        button, [role="button"] {
+            touch-action: manipulation;
         }
         .mono {
             font-family: 'JetBrains Mono', monospace;
@@ -131,7 +135,7 @@
         <!-- Top Floating Header: Environments, Spin Pause/Play, Customize & Square Home Icon (Right) -->
         <header class="absolute top-3 left-3 right-3 z-20 flex items-center justify-end gap-2 pointer-events-none">
             <!-- Top-Right Controls: Environments + Spin Pause/Play + Customize Drawer + Square Home Icon -->
-            <div class="pointer-events-auto flex items-center gap-2">
+            <div class="pointer-events-auto flex flex-wrap items-center justify-end gap-1.5 sm:gap-2">
                 <button id="btn-lighting" class="h-10 px-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 backdrop-blur-md border border-slate-700/80 shadow-xl text-xs font-bold text-slate-200 flex items-center gap-1.5 transition">
                     🌙 Environments
                 </button>
@@ -8017,6 +8021,7 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
             if (name === "characters") {
                 renderCharactersGrid();
             } else if (name === "studio") {
+                resizeViewport();
                 requestAnimationFrame(resizeViewport);
             }
         }
@@ -8104,8 +8109,12 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
             const allChars = [...builtins, ...getCustomCharacters()];
 
             allChars.forEach((ch) => {
-                const card = document.createElement("div");
-                card.className = "group bg-slate-900/90 hover:bg-slate-800/90 border border-slate-800 hover:border-sky-500/50 rounded-2xl p-4 flex flex-col justify-between gap-4 transition-all cursor-pointer shadow-lg";
+                const wrapper = document.createElement("div");
+                wrapper.className = "relative";
+
+                const card = document.createElement("button");
+                card.type = "button";
+                card.className = "group w-full text-left bg-slate-900/90 hover:bg-slate-800/90 active:bg-slate-800 active:scale-[0.98] border border-slate-800 hover:border-sky-500/50 rounded-2xl p-4 flex flex-col justify-between gap-4 transition-all cursor-pointer shadow-lg touch-manipulation select-none";
 
                 const icon = ch.icon || (ch.baseSkin === "lenny" ? "⚔️" : "✨");
                 const subtitle = ch.subtitle || (ch.baseSkin === "lenny" ? "Samurai Custom" : "Magician Custom");
@@ -8113,7 +8122,7 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
                 card.innerHTML = `
                     <div class="flex items-start justify-between gap-3">
                         <div class="flex items-center gap-3">
-                            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl border border-white/10 shadow-inner" style="background: linear-gradient(135deg, ${ch.primaryColor}, ${ch.accentColor});">
+                            <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl border border-white/10 shadow-inner shrink-0" style="background: linear-gradient(135deg, ${ch.primaryColor}, ${ch.accentColor});">
                                 <span>${icon}</span>
                             </div>
                             <div>
@@ -8123,7 +8132,7 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
                         </div>
                         ${ch.isBuiltin
                             ? '<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">Preset</span>'
-                            : '<button class="btn-delete-char text-xs px-2 py-1 rounded-lg bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 transition" title="Delete Character">✕</button>'
+                            : '<span class="w-7 h-7 shrink-0"></span>'
                         }
                     </div>
                     <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
@@ -8135,22 +8144,50 @@ export function createCustomSkin(THREE, skinId = "${state.activeSkin}", options 
                     </div>
                 `;
 
-                card.addEventListener("click", (e) => {
-                    if (e.target.closest(".btn-delete-char")) return;
+                let lastOpenedAt = 0;
+                const openCharacter = () => {
+                    const now = Date.now();
+                    if (now - lastOpenedAt < 350) return;
+                    lastOpenedAt = now;
                     loadCharacterIntoStudio(ch);
-                });
+                };
 
-                const delBtn = card.querySelector(".btn-delete-char");
-                if (delBtn) {
+                let touchStartPos = null;
+                card.addEventListener("touchstart", (e) => {
+                    if (e.touches.length === 1) {
+                        touchStartPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                    }
+                }, { passive: true });
+                card.addEventListener("touchend", (e) => {
+                    if (!touchStartPos || e.changedTouches.length !== 1) return;
+                    const dx = Math.abs(e.changedTouches[0].clientX - touchStartPos.x);
+                    const dy = Math.abs(e.changedTouches[0].clientY - touchStartPos.y);
+                    touchStartPos = null;
+                    if (dx < 14 && dy < 14) {
+                        e.preventDefault();
+                        openCharacter();
+                    }
+                });
+                card.addEventListener("click", openCharacter);
+
+                wrapper.appendChild(card);
+
+                if (!ch.isBuiltin) {
+                    const delBtn = document.createElement("button");
+                    delBtn.type = "button";
+                    delBtn.className = "btn-delete-char absolute top-4 right-4 z-10 text-xs px-2 py-1 rounded-lg bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 transition";
+                    delBtn.title = "Delete Character";
+                    delBtn.innerText = "✕";
                     delBtn.addEventListener("click", (e) => {
                         e.stopPropagation();
                         const updated = getCustomCharacters().filter(item => item.id !== ch.id);
                         saveCustomCharacters(updated);
                         renderCharactersGrid();
                     });
+                    wrapper.appendChild(delBtn);
                 }
 
-                grid.appendChild(card);
+                grid.appendChild(wrapper);
             });
         }
 
